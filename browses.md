@@ -50,6 +50,12 @@ Error codes:
 
 **404** if the browse index doesn't exist
 
+## Search methods
+### Browse by metadata
+**/api/discover/browses/search/byMetadata?metadata=<:string>**
+
+It returns a collection of Browses that use the specified metadata
+
 ## Browse entries
 ### Metadata browse 1st level
 **/api/discover/browses/<:index-name>/entries**
