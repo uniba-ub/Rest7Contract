@@ -33,7 +33,7 @@ Each successful Patch operation will return a HTTP 200 CODE with the new workspa
 ### Add
 
 To check for duplicates, the client must send a JSON Patch ADD operation to  the *detect-duplicate* path as follow
-`curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/<:object-id>/submitterDecision", "value": {"value":"verify","note":"test"}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+`curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/<:object-id>/submitterDecision", "value": {"value": "verify", "note": "test"}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 for example if a item exist with the following metadata
 ```json
@@ -123,10 +123,10 @@ and we are submitting a workspace item:
 }
 ```
 
-the following request:
-`curl --data 'curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/8a4d8ed1-9ad0-413f-8122-710231bea28e/submitterDecision", "value": {"value":"verify","note":"test"}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/43366`
+When we are submitting the workspace item 43366, for instance, its title, using the following patch (that is called under the hood during dspace submission process)
+`curl --data 'curl --data '[ { "op": "add", "path": "/sections/basicinformation/dc.title", "value": {"value": "sample submission", "language": null, "authority": null, "display": "sample submission", "confidence": -1, "place": 0,  "otherInformation": null}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/43366`
 
-will result in
+The following duplicates are identified, listed inside detect-duplicate section:
 ```json
 {
   "id": 43366,
@@ -173,30 +173,6 @@ will result in
             "lastModified": "2020-01-31T10:53:37.227+0000",
             "type": "item"
           }
-        },
-        "1320eb17-b7e5-4452-bf93-9f9ec234b8d5": {
-          ...,
-          "matchObject": {
-            "id": "1320eb17-b7e5-4452-bf93-9f9ec234b8d5",
-            "uuid": "1320eb17-b7e5-4452-bf93-9f9ec234b8d5",
-            "name": "Sample submission",
-            "handle": null,
-            "metadata": [
-              {
-                "key": "dc.title",
-                "value": "Sample submission",
-                "language": null,
-                "authority": null,
-                "confidence": -1
-              },
-              ...
-            ],
-            "inArchive": false,
-            "discoverable": true,
-            "withdrawn": false,
-            "lastModified": "2020-01-31T11:25:30.584+0000",
-            "type": "item"
-          }
         }
       }
     },
@@ -204,8 +180,48 @@ will result in
   }
 }
 ```
+In section detect-duplicate is listed the item (9db079fc-359f-4aa4-ad4f-2dd2f0afaac6) since the dc.title is the same as our submitting workspace item. 
+Now we can state that the found duplicate is to be further analyzed adding a comment for the administrator or ignored. 
 
-Inside the Json result, two matching items are returned: the item "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6" and the one related to the workspace item 43366.
+To report a note we use the following request:
+`curl --data 'curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/9db079fc-359f-4aa4-ad4f-2dd2f0afaac6/submitterDecision", "value": {"value": "verify", "note": "check the title for duplicate"}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/43366`
+
+will result in
+```json
+{
+  "id": 43366,
+  ...
+  "sections": {
+    ...,
+    "detect-duplicate": {},
+    ...
+  }
+}
+```
+
+if instead, we wanted to ignore the duplicate we would have run the following command:
+`curl --data 'curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/9db079fc-359f-4aa4-ad4f-2dd2f0afaac6/submitterDecision", "value": {"value": "reject", "note": null}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/43366`
+
+and we would have achieved the same result:
+```json
+{
+  "id": 43366,
+  ...
+  "sections": {
+    ...,
+    "detect-duplicate": {},
+    ...
+  }
+}
+```
+
+The syntax of both command is:
+`curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/<:object-uuid>/submitterDecision", "value": {"value": "<operation>", "note": <note> }}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+
+where supported values are:
+- <operation> set to "verify" and <note> set to a string, such as "check the title for duplicate" if we have to signal a note;
+- <operation> set to "reject" and <note> set to null if we have to ignore the duplication.
+- <object-uuid> is the uuid of the found duplicate.
 
 ### Replace
 
