@@ -205,7 +205,7 @@ will result in
 }
 ```
 
-nside the Json result, two matching items are returned: the item "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6" and the one related to the workspace item 43366.
+Inside the Json result, two matching items are returned: the item "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6" and the one related to the workspace item 43366.
 
 ### Replace
 
