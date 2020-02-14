@@ -143,7 +143,11 @@ The following duplicates are identified, listed inside detect-duplicate section:
     "detect-duplicate": {
       "matches": {
         "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6": {
-		  ...,
+		      "submitterDecision" : null,
+          "workflowDecision" : null,
+          "adminDecision" : null,
+          "submitterNote" : null,
+          "workflowNote" : null,
           "matchObject": {
             "id": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
             "uuid": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
@@ -201,32 +205,128 @@ will result in
   ...
   "sections": {
     ...,
-    "detect-duplicate": {},
+    "detect-duplicate": {
+      "matches": {
+        "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6": {
+		      "submitterDecision" : "verify",
+          "workflowDecision" : null,
+          "adminDecision" : null,
+          "submitterNote" : "check the title for duplicate",
+          "workflowNote" : null,
+          "matchObject": {
+            "id": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
+            "uuid": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
+            "name": "Sample submission",
+            "handle": "123456789/28381",
+            "metadata": [
+              {
+                "key": "dc.contributor.author",
+                "value": "Francesco, Cadili",
+                "language": null,
+                "authority": "rp05896",
+                "confidence": 600
+              },
+              {
+                "key": "dc.contributor.editor",
+                "value": "Matteo, Perelli",
+                "language": null,
+                "authority": "rp05897",
+                "confidence": 600
+              },
+              ...,
+              {
+                "key": "dc.title",
+                "value": "Sample submission",
+                "language": null,
+                "authority": null,
+                "confidence": -1
+              },
+              ...
+            ],
+            "inArchive": true,
+            "discoverable": true,
+            "withdrawn": false,
+            "lastModified": "2020-01-31T10:53:37.227+0000",
+            "type": "item"
+          }
+        }
+      }
+    },
     ...
   }
 }
 ```
+Where the result of the path operation is underlined by the submitterDecision field set to "verify" and the submitterNote set to "check the title for duplicate".
 
 if instead, we wanted to ignore the duplicate we would have run the following command:
 
 `curl --data 'curl --data '[ { "op": "add", "path": "/sections/detect-duplicate/matches/9db079fc-359f-4aa4-ad4f-2dd2f0afaac6/submitterDecision", "value": {"value": "reject", "note": null}}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/43366`
 
-and we would have achieved the same result:
+and we would have achieved the following result:
 ```json
 {
   "id": 43366,
   ...
   "sections": {
     ...,
-    "detect-duplicate": {},
+    "detect-duplicate": {
+      "matches": {
+        "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6": {
+		      "submitterDecision" : "reject",
+          "workflowDecision" : null,
+          "adminDecision" : null,
+          "submitterNote" : null,
+          "workflowNote" : null,
+          "matchObject": {
+            "id": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
+            "uuid": "9db079fc-359f-4aa4-ad4f-2dd2f0afaac6",
+            "name": "Sample submission",
+            "handle": "123456789/28381",
+            "metadata": [
+              {
+                "key": "dc.contributor.author",
+                "value": "Francesco, Cadili",
+                "language": null,
+                "authority": "rp05896",
+                "confidence": 600
+              },
+              {
+                "key": "dc.contributor.editor",
+                "value": "Matteo, Perelli",
+                "language": null,
+                "authority": "rp05897",
+                "confidence": 600
+              },
+              ...,
+              {
+                "key": "dc.title",
+                "value": "Sample submission",
+                "language": null,
+                "authority": null,
+                "confidence": -1
+              },
+              ...
+            ],
+            "inArchive": true,
+            "discoverable": true,
+            "withdrawn": false,
+            "lastModified": "2020-01-31T10:53:37.227+0000",
+            "type": "item"
+          }
+        }
+      }
+    }
     ...
   }
 }
 ```
+Where the result of the path operation is underlined by the submitterDecision field set to "reject".
 
 ### Replace
+The operation is not implemented. The replace operation will be performed with a sequence of Add and Remove operations.
 
 ### Remove
+To be implemented.
 
 ### Move, Test & copy
 No plan to implement the move, test and copy operations at the current stage
