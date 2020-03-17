@@ -11,6 +11,7 @@ upload | [/config/submissionuploads](submissionuploads.md) | [example](workspace
 license | [it is retrieved from the collection following the *license* link](collections.md#License) | [example](workspaceitem-data-license.md)
 cclicense | t.b.d | t.b.d
 access | t.b.d | t.b.d
+detect-duplicate|t.b.d | [example](workspaceitem-data-detect-duplicate.md)
 
 n/a --> not applicable. The sectionType doesn't require/support any extra configuration
 t.b.d. --> to be defined. We still need to discuss that
