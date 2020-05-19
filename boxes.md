@@ -20,7 +20,7 @@ Provide detailed information about a specific box. The JSON response document is
   "minor": false,
   "style": "col-md-6",
   "priority": 1,
-  "group": 1,
+  "clear": true,
   "security": 0,
   "box-type": "search",
   "type": "box"
@@ -31,12 +31,19 @@ Attributes
 * the *header* attribute is the label or the i18n key to use to present the section to the user
 * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata
 * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization
-* the box-type attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics 
+* the *box-type* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
+* the *clear* is true if the box fills the entire row, false otherwise. 
 
 Exposed links:
 * configuration: link to a configuration entity with more information specific for the box type
 * fields: link to the fields that belong to this tab
 * securityMetadata: link to the metadatafields that defined the security
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated. Please note that this also apply to resource policy related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the resourcepolicy
+* 404 Not found - if the resourcepolicy doesn't exist (or was already deleted)
 
 ## Linked entities
 ### Fields
@@ -44,6 +51,18 @@ Exposed links:
 **GET /api/layout/boxes/<:id>/fields**
 
 It returns all the fields included in the box.
+
+### SecurityMetadata
+#### Retrieve SecurityMetadata of the box
+**GET /api/layout/boxes/<:id>/securitymetadata**
+
+It returns the metadatafields that defined the security of box
+
+### Configuration
+#### Retrieve configuration of the box
+**GET /api/layout/boxes/<:id>/configuration**
+
+It returns configuration entity with more information specific for the box type
 
 ## Search methods
 ### findByItem
