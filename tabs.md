@@ -15,7 +15,7 @@ Provide detailed information about a specific tab. The JSON response document is
   "id": 1,
   "shortname": "info",
   "header": "Profile",
-  "entity-type": "researcherpage",
+  "entityType": "researcherpage",
   "priority": 1,
   "security": 0,
   "type": "tab"

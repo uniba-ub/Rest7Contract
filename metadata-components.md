@@ -26,12 +26,12 @@ Provide detailed information about a specific Metadata Component. The JSON respo
 	  	{
 	  		bitstream: {
 	  			bundle: "ORIGINAL", 
-	  			metadata-field: "dc.type",
-	  			metadata-value: "picture"
+	  			metadataField: "dc.type",
+	  			metadataValue: "picture"
 	  		},
 	  		label: "Authors",
 	  		rendering: "thumbnail",
-	  		field-type: "bitstream",
+	  		fieldType: "bitstream",
 	  		style: null
 	  	}
   	}

@@ -15,14 +15,14 @@ Provide detailed information about a specific box. The JSON response document is
   "id": 1,
   "shortname": "primary",
   "header": "Primary Information",
-  "entity-type": "researcherpage",
+  "entityType": "researcherpage",
   "collapsed": false,
   "minor": false,
   "style": "col-md-6",
   "priority": 1,
   "clear": true,
   "security": 0,
-  "box-type": "search",
+  "boxType": "search",
   "type": "box"
 }
 ```
@@ -31,8 +31,8 @@ Attributes
 * the *header* attribute is the label or the i18n key to use to present the section to the user
 * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata
 * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization
-* the *box-type* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
-* the *clear* is true if the box fills the entire row, false otherwise. 
+* the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
+* the *clear* attribute is true if the box fills the entire row, false otherwise. 
 
 Exposed links:
 * configuration: link to a configuration entity with more information specific for the box type
