@@ -8,7 +8,7 @@ Provide access to the workspaceitems. It returns the list of existent workspacei
 
 Example: to be provided
 
-## Single Item
+## Single Workspace Item
 **/api/submission/workspaceitems/<:id>**
 
 Provide detailed information about a specific workspaceitem. The JSON response document is as follow
@@ -121,6 +121,40 @@ In addition, it allows in future to change the 1:1 association between collectio
 
 It returns the workspaceitem created by the specified submitter
 
+## Get Single Workspace Item from Item UUID
+
+**/api/submission/workspaceitems/search/item?uuid=<:item-uuid>**
+
+/server/api/submission/workspaceitems/search/item?uuid=cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+The item uuid is mandatory
+
+There's always at most one workspace item per Item, so this endpoint will return a single workspace item, not a list
+
+It would respond with:
+* 200 OK - Returning the workspace item if there's a match
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to view the workspace item
+* 204 if the workspace item doesn't exist
+
 ## Multipart POST Method
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
-If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.   
+If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.
+
+An attribute to define the owning collection can be included. If omitted, the first collection the user can submit to will be used
+
+The Multipart POST can include a uri-list containing:
+* The [external entry value](external-authority-sources.md) whose metadata should be imported
+
+An example curl call:
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ -H "Content-Type:text/uri-list" \
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+```
+
+No confirmation, user has confirmed they want this record, and the previous state of the item is empty
+
+If an external entry value is included, the metadata from this external source should be imported automatically.  
+There's no need for a preview of the expected changes similar to the [Metadata Suggestions](metadata-suggestions.md) functionality because
+* The user has already confirmed they want to import this particular record
+* This is a new submission, it starts from an empty item

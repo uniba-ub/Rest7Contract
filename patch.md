@@ -15,16 +15,16 @@ This use of the add operation to replace a value could be counter intuitive but 
 
 ### Remove
 The remove operation is expected to be supported by all the endpoints that implement the Patch method for all the json path not flagged as **READ-ONLY**.
-Support for remove operation is expected to be provided also to the array index path level for each attribute or list where position is meaningful. This include for instance the metadata values or the uploaded bitstreams so that an author or a bitstrems can be removed individually.  
+Support for remove operation is expected to be provided also to the array index path level for each attribute or list where position is meaningful. This include for instance the metadata values or the uploaded bitstreams so that an author or a bitstream can be removed individually.  
 The path specified will be nullified deleting all the children objects if any.
 
 ### Replace
 The replace operation is expected to be supported by all the endpoints that implement the Patch method for all the json path not flagged as **READ-ONLY**.
 
-The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation without a previous value will return an error. See the [general errors on PATCH requests section](patch.md#Errors)
+The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation without a previous value will return an error. See the [general errors on PATCH requests section](patch.md#error-codes)
 
 ### Move
-The move operation should be supported on array attributes or linked list where the position is meaningful. This include for instance the metadata values so that authors can be reordered or the list of bitstrems.  
+The move operation should be supported on array attributes or linked list where the position is meaningful. This include for instance the metadata values so that authors can be reordered or the list of bitstreams.
 
 ### Test & copy
 No plan to implement the test and copy operations at the current stage

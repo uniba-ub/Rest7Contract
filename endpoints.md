@@ -6,31 +6,41 @@
 * [/api/core/communities](communities.md)
 * /api/core/collections
 * [/api/core/items](items.md)
+* [/api/core/itemtemplates](itemtemplates.md)
 * [/api/core/bitstreams](bitstreams.md)
-* /api/core/bitstreamformats
+* [/api/core/bitstreamformats](bitstreamformats.md)
+* [/api/core/bundles](bundles.md)
 * /api/core/sites
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/epersons](epersons.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
-* [/api/authn/login](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
-* [/api/authn/logout](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
-* [/api/authn/status](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+* [/api/authn/login](authentication.md#Login)
+* [/api/authn/logout](authentication.md#Logout)
+* [/api/authn/status](authentication.md#Status)
+* [/api/config/harvestermetadata](harvestermetadata.md)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/config/submissionuploads](submissionuploads.md)
+* [/api/config/workflowdefinitions](workflowdefinitions.md)
+* [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
 * [/api/discover/search](search-endpoint.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/integration/authorities](authorities.md)
-
-## Endpoints Under Development/Discussion
+* [/api/versioning/version](version.md)
+* [/api/versioning/versionhistory](versionhistory.md)
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
-* /api/authz/resourcepolicies
+
+## Endpoints Under Development/Discussion
+* [/api/authz/resourcepolicies](resourcepolicies.md)
+* [/api/authz/authorizations](authorizations.md)
+* [/api/authz/features](features.md)
+* [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
 ## Other Endpoints (raw list)
