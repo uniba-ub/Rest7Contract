@@ -20,7 +20,7 @@ Provide detailed information about a specific Metadata Component. The JSON respo
 	  		metadata: "dc.contibutor.author",
 	  		label: "Authors",
 	  		rendering: "browselink",
-	  		field-type: "metadata",
+	  		fieldType: "metadata",
 	  		style: null
 	  	},
 	  	{
