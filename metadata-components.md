@@ -1,15 +1,19 @@
 # Metadata Components Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
+
 **/api/layout/metadatacomponents**   
 
 Not implemented
 
 ## Single Metadata Component
+
 **/api/layout/metadatacomponents/<:string>**
 
 Provide detailed information about a specific Metadata Component. The JSON response document is as follow
+
 ```json
 {
   "id": "box-shortname",

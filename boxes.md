@@ -2,14 +2,57 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
+
 **/api/layout/boxes**   
 
 Not implemented
 
+## New Box
+**POST /api/layout/boxes**
+
+To create a new Box perform as POST with the follow JSON:
+
+```json
+{
+  "shortname": "primary",
+  "header": "Primary Information",
+  "entityType": "researcherpage",
+  "collapsed": false,
+  "minor": false,
+  "style": "col-md-6",
+  "priority": 1,
+  "clear": true,
+  "security": 0,
+  "boxType": "search",
+  "type": "box"
+}
+```
+This endpoint is reserved to system administrators, its returns the created tab.
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 UNPROCESSABLE ENTITY - if the json body is unprocessable for CrisLayoutBoxRest entity
+
+## Delete tab
+
+**DELETE /api/layout/boxes/<:id>**
+
+Delete a Box. This endpoint is reserved to system administrators.
+
+Return codes:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the box doesn't exist (or was already deleted)
+
 ## Single Box
-**/api/layout/boxes/<:id>**
+
+**GET /api/layout/boxes/<:id>**
 
 Provide detailed information about a specific box. The JSON response document is as follow
+
 ```json
 {
   "id": 1,
@@ -46,31 +89,41 @@ Return codes:
 * 404 Not found - if the resourcepolicy doesn't exist (or was already deleted)
 
 ## Linked entities
+
 ### Fields
+
 #### Retrieve included boxes
+
 **GET /api/layout/boxes/<:id>/fields**
 
 It returns all the fields included in the box.
 
 ### SecurityMetadata
+
 #### Retrieve SecurityMetadata of the box
+
 **GET /api/layout/boxes/<:id>/securitymetadata**
 
 It returns the metadatafields that defined the security of box
 
 ### Configuration
+
 #### Retrieve configuration of the box
+
 **GET /api/layout/boxes/<:id>/configuration**
 
 It returns configuration entity with more information specific for the box type
 
 ## Search methods
+
 ### findByItem
-**/api/layout/boxes/search/findByItem?uuid=<:item-uuid>&tab=<:id>**
+
+**GET /api/layout/boxes/search/findByItem?uuid=<:item-uuid>&tab=<:id>**
 
 It returns the boxes that are available for the specified item in the requested tab. The boxes are sorted by priority ascending. This are filtered based on the permission of the current user and available data in the items (empty boxes are not included).
 
 ### findByEntityType
-**/api/layout/boxes/search/findByEntityType?type=<:string>**
+
+**GET /api/layout/boxes/search/findByEntityType?type=<:string>**
 
 It returns the boxes that are available for the items of the specified type. This endpoint is reserved to system administrators
