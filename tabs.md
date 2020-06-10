@@ -68,7 +68,7 @@ Exposed links:
 * securityMetadata: link to the metadatafields that defined the security
 
 Return codes:
-* 200 OK - if the operation succeed
+* 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated. Please note that this also apply to resource policy related to the Anonymous group
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the tab
 * 404 Not found - if the tab doesn't exist (or was already deleted)
@@ -85,7 +85,7 @@ To add an existing box to tab perform as PATCH with the follow JSON:
 [{
   "op": "add",
   "path": "/boxes",
-  "value": "[ { boxes_object } ]"
+  "value": "[ { box_object } ]"
 }]
 ```
 
@@ -109,7 +109,7 @@ To add an existing box to tab perform as PATCH with the follow JSON:
 ```json
 [{
   "op": "remove",
-  "path": "/boxes/<box_index"
+  "path": "/boxes/<box_index>"
 }]
 ```
 This endpoint is reserved to system administrators
