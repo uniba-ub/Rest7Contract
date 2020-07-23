@@ -174,7 +174,7 @@ curl -i -X POST ${dspace-url}/api/cris/profiles?eperson=eb645ef8-1373-41eb-bf67-
 ```
 
 ## Hide/unhide a profile
-**PUT /api/cris/profiles/<:eperson-uuid>**
+**PATCH /api/cris/profiles/<:eperson-uuid>**
 
 This operation allow to change the visibility of one profile. Only an administrator can modify the profile of another eperson.
 
