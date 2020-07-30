@@ -76,10 +76,9 @@ Attributes
 * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization
 * the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
 * the *clear* attribute is true if the box fills the entire row, false otherwise. 
+* the *configuration* attribute is a json object containing [configuration details that depend on the specific boxType](boxes-types.md)
 
 Exposed links:
-* configuration: link to a configuration entity with more information specific for the box type
-* fields: link to the fields that belong to this tab
 * securityMetadata: link to the metadatafields that defined the security
 
 Return codes:
@@ -90,14 +89,6 @@ Return codes:
 
 ## Linked entities
 
-### Fields
-
-#### Retrieve included boxes
-
-**GET /api/layout/boxes/<:id>/fields**
-
-It returns all the fields included in the box.
-
 ### SecurityMetadata
 
 #### Retrieve SecurityMetadata of the box
@@ -105,14 +96,6 @@ It returns all the fields included in the box.
 **GET /api/layout/boxes/<:id>/securitymetadata**
 
 It returns the metadatafields that defined the security of box
-
-### Configuration
-
-#### Retrieve configuration of the box
-
-**GET /api/layout/boxes/<:id>/configuration**
-
-It returns configuration entity with more information specific for the box type
 
 ## Search methods
 
