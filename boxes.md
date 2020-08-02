@@ -23,11 +23,11 @@ To create a new Box perform as POST with the follow JSON:
   "priority": 1,
   "clear": true,
   "security": 0,
-  "boxType": "search",
+  "boxType": "metadata",
   "type": "box"
 }
 ```
-This endpoint is reserved to system administrators, its returns the created tab.
+This endpoint is reserved to system administrators, its returns the created box.
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -76,9 +76,9 @@ Attributes
 * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization
 * the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
 * the *clear* attribute is true if the box fills the entire row, false otherwise. 
-* the *configuration* attribute is a json object containing [configuration details that depend on the specific boxType](boxes-types.md)
 
 Exposed links:
+* configuration: link to a configuration entity with more information specific for the box type. Configuration details depend on the [specific boxType](boxes-types.md)
 * securityMetadata: link to the metadatafields that defined the security
 
 Return codes:
@@ -96,6 +96,51 @@ Return codes:
 **GET /api/layout/boxes/<:id>/securitymetadata**
 
 It returns the metadatafields that defined the security of box
+
+**GET /api/layout/boxes/<:id>/securitymetadata/<:id>**
+
+_Unsupported._ If you want detailed information about a single metadatafield in the box, use the `/api/core/metadatafields/<:metadatafield.id>` endpoint.
+
+**POST /api/layout/boxes/<:id>/securitymetadata**
+
+A POST request will result in adding the metadatafield to the list of metadata used to evaluate access permission to the box.
+
+The metadata (also more than one) MUST be included in the body using the `text/uri-list` content type
+ 
+Return codes:
+ * 204 No Content - if the update succeeded (including the case of no-op if the mapping was already as requested)
+ * 401 Unauthorized - if you are not authenticated
+ * 403 Forbidden - if you are not logged in as administrator 
+ * 404 Not found - if the box doesn't exist (or was already deleted)
+ * 422 Unprocessable Entity - if the specified metadata is not found
+
+**PUT /api/layout/boxes/<:id>/securitymetadata**
+
+_Unsupported._ You may replace or update the security metadata using DELETE requests and/or POST requests.
+
+**DELETE /api/layout/boxes/<:id>/securitymetadata**
+
+_Unsupported._ At this time, we do not support removing all security metadata in a single request. Please use `DELETE /api/layout/boxes/<:id>/securitymetadata/<:metadatafield.id>` to remove metadatafield one by one.
+
+**DELETE /api/layout/boxes/<:id>/securitymetadata/<:metadatafield.id>**
+
+A DELETE request will result in removing the metadatafield from the current list.
+
+Return codes:
+ * 204 No Content if the delete succeeded (including the case of no-op if the metadata was not mapped) 
+ * 401 Unauthorized - if you are not authenticated
+ * 403 Forbidden - if you are not logged in as administrator
+ * 404 Not found - if the box doesn't exist (or was already deleted)
+ * 422 Unprocessable Entity - if the specified uri cannot resolve to a metadatafield (if the uri is valid but the metadatafield is not found, 204 is expected)
+
+
+### Configuration
+
+#### Retrieve configuration of the box
+
+**GET /api/layout/boxes/<:id>/configuration**
+
+It returns configuration entity with more information specific for the [box type](boxes-types.md)
 
 ## Search methods
 
