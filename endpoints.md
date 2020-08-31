@@ -37,6 +37,7 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/cris/profiles](profiles.md)
+* [/api/layout/sections](sections.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
