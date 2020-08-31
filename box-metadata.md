@@ -25,7 +25,9 @@ Provides detailed information about the metadata included in the box
 	  		label: "Authors",
 	  		rendering: "browselink",
 	  		fieldType: "metadata",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	},
 	  	{
 	  		bitstream: {
@@ -36,7 +38,9 @@ Provides detailed information about the metadata included in the box
 	  		label: "Authors",
 	  		rendering: "thumbnail",
 	  		fieldType: "bitstream",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	}
   	}
   ]
@@ -49,7 +53,9 @@ Attributes
 * the *id* attribute has the same value that the id of the related box
 * the *label* attribute is the i18n key for the field label to visualize
 * the *rendering* attribute defines the component to use to visualize the field. Examples are browselink, longtext, identifier, date, etc. for metadata field and preview, thubmnail, etc. for bitstream field 
-* the *style* attribute allows to set arbitrary css styles to the generated html
+* the *style* attribute allows to set arbitrary css styles to the container of the generated html
+* the *styleLabel* attribute allows to set arbitrary css styles to the label
+* the *styleValue* attribute allows to set arbitrary css styles to the metadata value
 * the *fieldType" is one of metadata or bitstream a corresponding attribute will be present
 * metadata: is the canonical name of the metadata to use (eg dc.contributor.author, dc.title, etc.)
 * bitstream: is an object containing details to filter the bitstreams to use. It can be the name of the bundle to use and/or the value of specfic bitstream metadata
@@ -77,6 +83,8 @@ that will transform
 	  		rendering: "browselink",
 	  		fieldType: "metadata",
 	  		style: null
+	  		styleLabel: null,
+	  		styleValue: null
 	  	},
 	  	{
 	  		bitstream: {
@@ -88,6 +96,8 @@ that will transform
 	  		rendering: "thumbnail",
 	  		fieldType: "bitstream",
 	  		style: null
+	  		styleLabel: null,
+	  		styleValue: null
 	  	}
   	}
   ],
@@ -107,14 +117,18 @@ in
 	  		label: "Department Name",
 	  		rendering: "browselink",
 	  		fieldType: "metadata",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	},
 	  	{
 	  		metadata: "dc.contibutor.author",
 	  		label: "Authors",
 	  		rendering: "browselink",
 	  		fieldType: "metadata",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	},
 	  	{
 	  		bitstream: {
@@ -125,7 +139,9 @@ in
 	  		label: "Authors",
 	  		rendering: "thumbnail",
 	  		fieldType: "bitstream",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	}
   	}
   ],
@@ -157,7 +173,9 @@ that will transform
 	  		label: "Authors",
 	  		rendering: "browselink",
 	  		fieldType: "metadata",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	},
 	  	{
 	  		bitstream: {
@@ -168,7 +186,9 @@ that will transform
 	  		label: "Authors",
 	  		rendering: "thumbnail",
 	  		fieldType: "bitstream",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	}
   	}
   ],
@@ -192,7 +212,9 @@ in
 	  		label: "Authors",
 	  		rendering: "thumbnail",
 	  		fieldType: "bitstream",
-	  		style: null
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
 	  	}
   	}
   ],
