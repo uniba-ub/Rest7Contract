@@ -16,14 +16,13 @@ To create a new Box perform as POST with the follow JSON:
 {
   "shortname": "primary",
   "header": "Primary Information",
-  "entityType": "researcherpage",
+  "entityType": "Person",
   "collapsed": false,
   "minor": false,
   "style": "col-md-6",
-  "priority": 1,
   "clear": true,
   "security": 0,
-  "boxType": "metadata",
+  "boxType": "METADATA",
   "type": "box"
 }
 ```
@@ -58,14 +57,13 @@ Provide detailed information about a specific box. The JSON response document is
   "id": 1,
   "shortname": "primary",
   "header": "Primary Information",
-  "entityType": "researcherpage",
+  "entityType": "Person",
   "collapsed": false,
   "minor": false,
   "style": "col-md-6",
-  "priority": 1,
   "clear": true,
   "security": 0,
-  "boxType": "search",
+  "boxType": "RELATION",
   "type": "box"
 }
 ```

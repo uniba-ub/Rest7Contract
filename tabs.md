@@ -14,7 +14,7 @@ To create a new Tab perform as POST with the follow JSON:
 {
   "shortname": "info",
   "header": "Profile",
-  "entityType": "researcherpage",
+  "entityType": "Person",
   "priority": 1,
   "security": 0,
   "type": "tab"
@@ -49,7 +49,7 @@ Provide detailed information about a specific tab. The JSON response document is
   "id": 1,
   "shortname": "info",
   "header": "Profile",
-  "entityType": "researcherpage",
+  "entityType": "Person",
   "priority": 1,
   "security": 0,
   "type": "tab"
