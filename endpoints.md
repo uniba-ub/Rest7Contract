@@ -37,6 +37,8 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/cris/profiles](profiles.md)
+* [/api/cris/orcidqueues](orcidqueues.md)
+* [/api/cris/orcidhistories](orcidhistories.md)
 * [/api/layout/sections](sections.md)
 
 ## Endpoints Under Development/Discussion
