@@ -138,6 +138,22 @@ An example curl call:
 
 Only one external entry value should be present. If multiple external entry values are present, a 400 bad request will be thrown
 
+### Creating an archived item from a reciter source
+**POST /api/core/items?owningCollection=<:uuid>**
+
+Administrators can directly create an archived item (bypassing the workflow) from an external source. The content-type is uri-list.
+
+The URI-list should contain the [reciter entry value](recitersources.md) whose metadata should be imported
+
+An example curl call:
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ -H "Content-Type:text/uri-list" \
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+```
+
+Only one external entry value should be present. If multiple external entry values are present, a 400 bad request will be thrown
+
 ## Updating item metadata
 
 **PUT /api/core/items/<:uuid>**
