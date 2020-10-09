@@ -16,17 +16,44 @@ Example:
         "display": "publication one",
         "source": "reciter",
         "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
-        "evidences": [
-          "acceptedRejectedEvidence",
-          "authorNameEvidence",
-          "journalCategoryEvidence",
-          "affiliationEvidence",
-          "relationshipEvidence",
-          "educationYearEvidence",
-          "personTypeEvidence",
-          "articleCountEvidence",
-          "averageClusteringEvidence"
-        ],
+        "evidences": {
+          "acceptedRejectedEvidence": {
+            "score": "2.7",
+            "notes": "notes"
+          },
+          "authorNameEvidence": {
+            "score": "0",
+            "notes": "notes"
+          },
+          "journalCategoryEvidence": {
+            "score": "6",
+            "notes": "notes"
+          },
+          "affiliationEvidence": {
+            "score": "xxx",
+            "notes": "notes"
+          },
+          "relationshipEvidence": {
+            "score": "9",
+            "notes": "notes"
+          },
+          "educationYearEvidence": {
+            "score": "3.6",
+            "notes": "notes"
+          },
+          "personTypeEvidence": {
+            "score": "4",
+            "notes": "notes"
+          },
+          "articleCountEvidence": {
+            "score": "6.7",
+            "notes": "notes"
+          },
+          "averageClusteringEvidence": {
+            "score": "7",
+            "notes": "notes"
+          }
+        },
         "metadata": {
             "dc.identifier.uri": [
               {
@@ -69,17 +96,44 @@ Example:
         "display": "publication one",
         "source": "reciter",
         "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/29339930",
-        "evidences": [
-          "acceptedRejectedEvidence",
-          "authorNameEvidence",
-          "journalCategoryEvidence",
-          "affiliationEvidence",
-          "relationshipEvidence",
-          "educationYearEvidence",
-          "personTypeEvidence",
-          "articleCountEvidence",
-          "averageClusteringEvidence"
-        ],
+        "evidences": {
+          "acceptedRejectedEvidence": {
+            "score": "2.7",
+            "notes": "notes"
+          },
+          "authorNameEvidence": {
+            "score": "0",
+            "notes": "notes"
+          },
+          "journalCategoryEvidence": {
+            "score": "6",
+            "notes": "notes"
+          },
+          "affiliationEvidence": {
+            "score": "xxx",
+            "notes": "notes"
+          },
+          "relationshipEvidence": {
+            "score": "9",
+            "notes": "notes"
+          },
+          "educationYearEvidence": {
+            "score": "3.6",
+            "notes": "notes"
+          },
+          "personTypeEvidence": {
+            "score": "4",
+            "notes": "notes"
+          },
+          "articleCountEvidence": {
+            "score": "6.7",
+            "notes": "notes"
+          },
+          "averageClusteringEvidence": {
+            "score": "7",
+            "notes": "notes"
+          }
+        },
         "metadata": {
             "dc.identifier.uri": [
               {
@@ -156,17 +210,44 @@ sample for a search /server/api/integration/suggestions/search/findByPerson?uuid
         "display": "publication one",
         "source": "reciter",
         "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
-        "evidences": [
-          "acceptedRejectedEvidence",
-          "authorNameEvidence",
-          "journalCategoryEvidence",
-          "affiliationEvidence",
-          "relationshipEvidence",
-          "educationYearEvidence",
-          "personTypeEvidence",
-          "articleCountEvidence",
-          "averageClusteringEvidence"
-        ],
+        "evidences": {
+          "acceptedRejectedEvidence": {
+            "score": "2.7",
+            "notes": "notes"
+          },
+          "authorNameEvidence": {
+            "score": "0",
+            "notes": "notes"
+          },
+          "journalCategoryEvidence": {
+            "score": "6",
+            "notes": "notes"
+          },
+          "affiliationEvidence": {
+            "score": "xxx",
+            "notes": "notes"
+          },
+          "relationshipEvidence": {
+            "score": "9",
+            "notes": "notes"
+          },
+          "educationYearEvidence": {
+            "score": "3.6",
+            "notes": "notes"
+          },
+          "personTypeEvidence": {
+            "score": "4",
+            "notes": "notes"
+          },
+          "articleCountEvidence": {
+            "score": "6.7",
+            "notes": "notes"
+          },
+          "averageClusteringEvidence": {
+            "score": "7",
+            "notes": "notes"
+          }
+        },
         "metadata": {
             "dc.identifier.uri": [
               {
@@ -232,17 +313,44 @@ sample for a suggestion /api/integration/suggestions/24694772
     "display": "publication one",
     "source": "reciter",
     "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
-    "evidences": [
-      "acceptedRejectedEvidence",
-      "authorNameEvidence",
-      "journalCategoryEvidence",
-      "affiliationEvidence",
-      "relationshipEvidence",
-      "educationYearEvidence",
-      "personTypeEvidence",
-      "articleCountEvidence",
-      "averageClusteringEvidence"
-    ],
+    "evidences": {
+      "acceptedRejectedEvidence": {
+        "score": "2.7",
+        "notes": "notes"
+      },
+      "authorNameEvidence": {
+        "score": "0",
+        "notes": "notes"
+      },
+      "journalCategoryEvidence": {
+        "score": "6",
+        "notes": "notes"
+      },
+      "affiliationEvidence": {
+        "score": "xxx",
+        "notes": "notes"
+      },
+      "relationshipEvidence": {
+        "score": "9",
+        "notes": "notes"
+      },
+      "educationYearEvidence": {
+        "score": "3.6",
+        "notes": "notes"
+      },
+      "personTypeEvidence": {
+        "score": "4",
+        "notes": "notes"
+      },
+      "articleCountEvidence": {
+        "score": "6.7",
+        "notes": "notes"
+      },
+      "averageClusteringEvidence": {
+        "score": "7",
+        "notes": "notes"
+      }
+    },
     "metadata": {
         "dc.identifier.uri": [
           {
