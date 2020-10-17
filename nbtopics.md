@@ -5,6 +5,7 @@ Provide access to the OpenAIRE Broker topics. It returns the list of the OpenAIR
 
 ```json
 [
+
   {
     id: "ENRICH!MORE!PID",
     type: "nbtopic",
@@ -24,8 +25,8 @@ Provide access to the OpenAIRE Broker topics. It returns the list of the OpenAIR
 ```
 Attributes:
 * name: the name of the topic to display on the frontend user interface
-* lastEvent: the date of the last udate from OpenAIRE
-* totalSuggestions: the total number of suggestions provided by OpenAIRE for this topic
+* lastEvent: the date of the last update from OpenAIRE
+* totalEvents: the total number of suggestions provided by OpenAIRE for this topic
 * id: is the identifier to use in GET Single Topic
 
 Return codes:
@@ -44,14 +45,9 @@ Provide detailed information about a specific OpenAIRE Broker topic. The JSON re
   type: "nbtopic",
   name: "ENRICH/MORE/PID",
   lastEvent: "2020/10/09 10:11 UTC",
-  totalSuggestions: 33
+  totalEvents: 33
 }
  ```
-​
-Attributes:
-* name: the name of the topic to display on the frontend user interface
-* lastEvent: the date of the last udate from OpenAIRE
-* totalSuggestions: the total number of suggestions provided by OpenAIRE for this topic
 ​
 Return codes:
 * 200 OK - if the operation succeed
