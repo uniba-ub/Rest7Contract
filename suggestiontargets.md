@@ -118,6 +118,7 @@ Example:
 
 Status codes:
 * 200 Ok - if the operation succeed
+* 400 Bad Request - if the source parameter is missing
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in as an administrator
 
@@ -190,5 +191,6 @@ Example:
 Status codes:
 * 200 Ok - if the operation succeed
 * 204 No Content - if no suggestion targets are available for the specified profile
+* 400 Bad Request - if the target parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
