@@ -331,6 +331,18 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access the processes
 
+**GET /api/system/processes/search/own**
+
+Search the processes started by the logged user
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* sort, options are startTime, endTime
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+
 ## Execution Deletion
 **DELETE /api/system/processes/<:process-id>**
 
