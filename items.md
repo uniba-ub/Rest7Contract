@@ -430,6 +430,73 @@ Provide version information based on a given Item UUID. An Item UUID will only m
 
 The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
 
+### Metrics
+**GET /api/core/items/<:uuid>/metrics**
+It returns the crismetrics that have the item
+
+The JSON response document is as follow
+```json
+{
+	"_embedded":{
+		"metrics":[
+			{
+				"id":1,
+				"metricType":"view",
+				"metricCount":2312.0,
+				"acquisitionDate":"Nov 21, 2020",
+				"startDate":null,
+				"endDate":null,
+				"last":true,
+				"remark":{"identifier":"2-s2.0-00349160000",
+                        "link":"https://www.scopus.com/inward/citedby.uri?partnerID\u000dhzOxMe3b\u0026scp\u003d67349162500\utt6origin\u003dinward",
+                        "pmid":"10000000",
+                        "doi":"10.0000/j.gene.2030.04.000"
+                        },
+				"deltaPeriod1":8,
+				"deltaPeriod2":31,
+				"rank":null,
+				"type":"metric",
+				"_links":{
+					"self":{
+						"href":"http://localhost/api/cris/metrics/1"
+					}
+				}
+			},
+			{
+				"id":2,
+				"metricType":"ScopusCitation",
+				"metricCount":43.0,
+				"acquisitionDate":"Dec 3, 2020",
+				"startDate":null,
+				"endDate":null,
+				"last":true,
+				"remark":null,
+				"deltaPeriod1":0,
+				"deltaPeriod2":null,
+				"rank":null,
+				"type":"metric",
+				"_links":{
+					"self":{
+						"href":"http://localhost/api/cris/metrics/2"
+					}
+				}
+			}
+		]
+	},
+	"_links":{
+		"self":{
+			"href":"http://localhost/api/core/items/40a0cdfe-a3d9-4f55-94c6-ebcdd2c1fa04/metrics"
+		}
+	},
+	"page":{
+		"number":0,
+		"size":20,
+		"totalPages":1,
+		"totalElements":2
+	}
+}
+```
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**
