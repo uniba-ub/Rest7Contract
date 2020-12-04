@@ -14,10 +14,14 @@ Provide detailed information about a specific metrics. The JSON response documen
     "startDate":null,
     "endDate":null,
     "last":true,
-    "remark":null,
-    "deltaPeriod1":null,
-    "deltaPeriod2":null,
-    "rank":null,
+    "remark": {"identifier":"2-s2.0-00349160000",
+               "link":"https://www.scopus.com/inward/citedby.uri?partnerID\u000dhzOxMe3b\u0026scp\u003d67349162500\utt6origin\u003dinward",
+               "pmid":"10000000",
+               "doi":"10.0000/j.gene.2030.04.000"
+               },
+    "deltaPeriod1":8,
+    "deltaPeriod2":31,
+    "rank":50,
     "type":"metric",
     "_links":{
         "self":{
