@@ -10,7 +10,7 @@ Provide detailed information about a specific metrics. The JSON response documen
     "id":1,
     "metricType":"view",
     "metricCount":2312.0,
-    "acquisitionDate": "2020-12-1",
+    "acquisitionDate": "Nov 21, 2020",
     "startDate":null,
     "endDate":null,
     "last":true,
