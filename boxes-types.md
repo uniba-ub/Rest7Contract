@@ -7,4 +7,4 @@ boxType | description | details
 ------------ | ------------- | -------------
 METADATA | the box is used to visualize metadata and files of the item | [boxmetadataconfiguration endpoint](box-metadata.md)
 RELATION | the box is used to visualize linked items retrieved via a discovery query | [boxrelationconfiguration endpoint](box-relation.md)
-METRICS | the box is used to visualize one or more metrics about the object | not available yet
+METRICS | the box is used to visualize one or more metrics about the object | [boxmetricsconfiguration endpoint](box-metrics.md)
