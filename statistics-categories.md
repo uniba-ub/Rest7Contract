@@ -16,7 +16,15 @@ An example JSON response document to `/api/statistics/categories/1911e8a4-6939-4
 {
     "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
     "type": "category",
-    "category-type": "TopCountries"
+    "category-type": "TopCountries",
+    "_links" : {
+     "usagereports" : {
+       "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries/usagereports"
+     },
+     "self" : {
+       "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
+     }
+    }
 }
 ```
 
