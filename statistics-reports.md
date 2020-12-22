@@ -17,6 +17,7 @@ An example JSON response document to `/api/statistics/usagereports/1911e8a4-6939
     "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
     "type": "usagereport",
     "report-type": "TopCountries",
+    "view-mode": "map",
     "points": [
         {
             "label": "United States",
@@ -56,6 +57,13 @@ The report-type specifies what data is returned, relevant e.g. to add a label to
 * TopCountries
 * TopCities
 
+The view-mode specifies the visualization mode for the statistics
+* chart.bar
+* chart.pie
+* chart.line
+* map
+* table 
+
 Possible response status
 
 - 200 OK - The specific statistics data was found, and the data has been properly returned.
@@ -70,6 +78,8 @@ This endpoint provides a paginated list of statistics for a DSpaceObject.
 
 The DSpaceObject is given through the following parameters:
 - `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
+- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM)
+- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM)
 
 The usual parameters for paginated lists are supported as well:
 - `page` The page number 
@@ -85,6 +95,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits",
                 "type": "usagereport",
                 "report-type": "TotalVisits",
+                "view-mode": "chart",
                 "points": [
                     {
                         "label": "cad835c8-0cae-4769-a08a-857f0f814020",
@@ -127,6 +138,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
                 "type": "usagereport",
                 "report-type": "TotalVisits",
+                "view-mode": "chart",
                 "points": [
                     {
                         "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
@@ -142,6 +154,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
                 "type": "usagereport",
                 "report-type": "TotalVisitsPerMonth",
+                "view-mode": "chart",
                 "points": [
                     {
                         "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
@@ -159,6 +172,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
                 "type": "usagereport",
                 "report-type": "TotalDownloads",
+                "view-mode": "chart",
                 "points": [
                     {
                         "label": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
@@ -174,6 +188,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
                 "type": "usagereport",
                 "report-type": "TopCountries",
+                "view-mode": "map",
                 "points": [
                     {
                         "label": "United States",
