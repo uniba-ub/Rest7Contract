@@ -95,7 +95,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits",
                 "type": "usagereport",
                 "report-type": "TotalVisits",
-                "view-mode": "chart",
+                "view-mode": "chart.bar",
                 "points": [
                     {
                         "label": "cad835c8-0cae-4769-a08a-857f0f814020",
@@ -138,7 +138,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
                 "type": "usagereport",
                 "report-type": "TotalVisits",
-                "view-mode": "chart",
+                "view-mode": "chart.bar",
                 "points": [
                     {
                         "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
@@ -154,7 +154,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
                 "type": "usagereport",
                 "report-type": "TotalVisitsPerMonth",
-                "view-mode": "chart",
+                "view-mode": "chart.line",
                 "points": [
                     {
                         "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
@@ -172,7 +172,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
                 "type": "usagereport",
                 "report-type": "TotalDownloads",
-                "view-mode": "chart",
+                "view-mode": "chart.bar",
                 "points": [
                     {
                         "label": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
