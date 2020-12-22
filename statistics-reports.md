@@ -35,7 +35,15 @@ An example JSON response document to `/api/statistics/usagereports/1911e8a4-6939
                 "views": 1
             }
         }
-    ]
+    ],
+    "_links" : {
+      "category" : {
+        "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
+      },
+      "self" : {
+        "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
+      }
+    }
 }
 ```
 
@@ -121,7 +129,15 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                             "views": 1800
                         }
                     }
-                ]
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
+                  }
+                }
             }
         ]
     }
@@ -148,7 +164,15 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                             "views": 3
                         }
                     }
-                ]
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
@@ -166,7 +190,15 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                             "2020-05": 3
                         }
                     }
-                ]
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
@@ -182,7 +214,15 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                             "downloads": 8
                         }
                     }
-                ]
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
@@ -206,7 +246,203 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                             "views": 1
                         }
                     }
-                ]
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
+            }
+        ]
+    }
+}
+```
+
+Possible response status:
+* 200 OK - The DSpaceObject was found, and the data has been properly returned.
+* 400 Bad Request - The uri parameter format is incorrect
+* 401 Unauthorized - if you are not authenticated and the statistics are not available to the Anonymous user
+* 403 Forbidden - if you are not logged in with sufficient permissions and the statistics are not available to the Anonymous user
+
+## Search Statistics for a statistics category
+**GET /api/statistics/usagereports/search/byCategory**
+
+This endpoint provides a paginated list of statistics for a DSpaceObject. 
+
+The DSpaceObject is given through the following parameters:
+- `category` The statistics category to retrieve statistics for
+- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM)
+- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM)
+
+The usual parameters for paginated lists are supported as well:
+- `page` The page number 
+- `size` The number of reports in a page
+
+An example JSON response document to `/api/statistics/usagereports/search/byCategory?page=0&size=2&category=1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits`:
+
+```json
+{
+    "_embedded": {
+        "usagereports": [
+            {
+                "id": "6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits",
+                "type": "usagereport",
+                "report-type": "TotalVisits",
+                "view-mode": "chart.bar",
+                "points": [
+                    {
+                        "label": "cad835c8-0cae-4769-a08a-857f0f814020",
+                        "type": "item",
+                        "id": "cad835c8-0cae-4769-a08a-857f0f814020",
+                        "values": {
+                            "views": 3313
+                        }
+                    },
+                    {
+                        "label": "6759d5e0-3915-4864-917c-1940bdb75fbd",
+                        "type": "item",
+                        "id": "6759d5e0-3915-4864-917c-1940bdb75fbd",
+                        "values": {
+                            "views": 3308
+                        }
+                    },
+                    {
+                        "label": "b0f6ce54-2ed8-4b67-a075-64794abb4e82",
+                        "type": "item",
+                        "id": "6759d5e0-3915-4864-917c-1940bdb75fbd",
+                        "values": {
+                            "views": 1800
+                        }
+                    }
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
+                  }
+                }
+            }
+        ]
+    }
+}
+```
+
+An example JSON response document to `/api/statistics/usagereports/search/byCategory?category=1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits`:
+
+```json
+{
+    "_embedded": {
+        "usagereports": [
+            {
+                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
+                "type": "usagereport",
+                "report-type": "TotalVisits",
+                "view-mode": "chart.bar",
+                "points": [
+                    {
+                        "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
+                        "type": "item",
+                        "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
+                        "values": {
+                            "views": 3
+                        }
+                    }
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
+            },
+            {
+                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
+                "type": "usagereport",
+                "report-type": "TotalVisitsPerMonth",
+                "view-mode": "chart.line",
+                "points": [
+                    {
+                        "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
+                        "type": "date",
+                        "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
+                        "values": {
+                            "2020-03": 0,
+                            "2020-04": 0,
+                            "2020-05": 3
+                        }
+                    }
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
+            },
+            {
+                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
+                "type": "usagereport",
+                "report-type": "TotalDownloads",
+                "view-mode": "chart.bar",
+                "points": [
+                    {
+                        "label": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
+                        "type": "bitstream",
+                        "id": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
+                        "values": {
+                            "downloads": 8
+                        }
+                    }
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
+            },
+            {
+                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
+                "type": "usagereport",
+                "report-type": "TopCountries",
+                "view-mode": "map",
+                "points": [
+                    {
+                        "label": "United States",
+                        "type": "country",
+                        "id": "US",
+                        "values": {
+                            "views": 2
+                        }
+                    },
+                    {
+                        "label": "China",
+                        "type": "country",
+                        "id": "CN",
+                        "values": {
+                            "views": 1
+                        }
+                    }
+                ],
+                "_links" : {
+                  "category" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  },
+                  "self" : {
+                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                  }
+                }
             }
         ]
     }
