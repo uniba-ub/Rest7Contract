@@ -11,16 +11,13 @@ As we don't have a use case to iterate over all the existing categories, the mai
 
 This endpoint provides a specific statistic category
 
-An example JSON response document to `/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries`:
+An example JSON response document to `/api/statistics/categories/mainReports`:
 ```json
 {
-    "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
+    "id": "mainReports",
     "type": "category",
-    "category-type": "TopCountries",
+    "category-type": "mainReports",
     "_links" : {
-     "usagereports" : {
-       "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries/usagereports"
-     },
      "self" : {
        "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
      }
@@ -28,19 +25,17 @@ An example JSON response document to `/api/statistics/categories/1911e8a4-6939-4
 }
 ```
 
-The ID is built from a concatenation of the UUID and the type of report for the given UUID
+The category-type often will match the id, it is expected to be used for internationalization
 
 Possible response status
 
-- 200 OK - The specific statistics category has been found, and the category has been properly returned.
-* 401 Unauthorized - if you are not authenticated, and the statistics category is not available to the Anonymous user
-* 403 Forbidden - if you are not logged in with sufficient permissions, and the statistics category is not available to the Anonymous user
+* 200 OK - The specific statistics category has been found, and the category has been properly returned.
 - 404 Not Found - The specified ID has been not found
 
-## Search Statistics for a DSpaceObject
+## Search Statistics Categories with reports for a DSpaceObject
 **GET /api/statistics/categories/search/object**
 
-This endpoint provides a paginated list of statistics category for a DSpaceObject. 
+This endpoint provides a paginated list of statistics categories that have not empty reports for a DSpaceObject. 
 
 The DSpaceObject is given through the following parameters:
 - `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
@@ -58,15 +53,12 @@ An example JSON response document to `/api/statistics/categories/search/object?p
     "_embedded": {
         "categories": [
             {
-                "id": "6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits",
+                "id": "mainReports",
                 "type": "category",
-                "category-type": "TotalVisits",
+                "category-type": "mainReports",
                 "_links" : {
-                  "usagereports" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits/usagereports"
-                  },
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
                   }
                 }
             }
@@ -75,61 +67,39 @@ An example JSON response document to `/api/statistics/categories/search/object?p
 }
 ```
 
-An example JSON response document to `/api/statistics/categories/search/object?uri=https://{dspace.url}/server/api/core/item/1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
+An example JSON response document to `/api/statistics/categories/search/object?uri=https://{dspace.url}/server/api/core/item/1911e8a4-6939-490c-b58b-a5d70f8d91fb` assuming multiple categories have reports:
 
 ```json
 {
     "_embedded": {
         "usagereports": [
             {
-                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
+                "id": "mainReports",
                 "type": "category",
-                "category-type": "TotalVisits",
+                "category-type": "mainReports",
                 "_links" : {
-                  "usagereports" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits/usagereports"
-                  },
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
                   }
                 }
             },
             {
-                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
+                "id": "relatedPublications",
                 "type": "category",
-                "category-type": "TotalVisitsPerMonth",
+                "category-type": "relatedPublications",
                 "_links" : {
-                  "usagereports" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth/usagereports"
-                  },
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/relatedPublications"
                   }
                 }
             },
             {
-                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
+                "id": "relatedProjects",
                 "type": "category",
-                "report-type": "TotalDownloads",
+                "report-type": "relatedProjects",
                 "_links" : {
-                  "usagereports" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads/usagereports"
-                  },
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads"
-                  }
-                }
-            },
-            {
-                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
-                "type": "category",
-                "report-type": "TopCountries",
-                "_links" : {
-                  "usagereports" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries/usagereports"
-                  },
-                  "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/relatedProjects"
                   }
                 }
             }
@@ -139,7 +109,6 @@ An example JSON response document to `/api/statistics/categories/search/object?u
 ```
 
 Possible response status:
-* 200 OK - The DSpaceObject has been found, and the data has been properly returned.
-* 400 Bad Request - The uri parameter format is incorrect
-* 401 Unauthorized - if you are not authenticated, and the statistics categories are not available to the Anonymous user
-* 403 Forbidden - if you are not logged in with sufficient permissions, and the statistics categories are not available to the Anonymous user
+* 200 OK - The DSpaceObject has been found, and the categories, eventually an empty page, have been properly returned.
+* 400 Bad Request - The uri parameter format is missing
+* 422 Unprocessable Entity - if the parameters are inconsistent, the uri is not resolved to a DSpaceObject the end date is earlier than the start date
