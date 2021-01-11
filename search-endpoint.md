@@ -628,6 +628,55 @@ The returned JSON response will be like:
 }
 ```
 
+It is also possible to configure a facet to expose the number of documents without any value, the number of distinct values in the facet and a link to get all the documents that don't contain any of the value in the current facet page.
+With all this option enabled the response will look like that
+
+```
+{
+    "id":null,
+    "scope":null,
+    "query":null,
+    "appliedFilters":null,
+    "sort":{"by":"score","order":"DESC"},
+    "configuration":"homepageConfiguration",
+    "name":"graphitemtype",
+    "facetType":"chart.pie",
+    "facetLimit":10,
+    "missing":"15",
+    "more":"15",
+    "totalElements":"6",
+    "prefix":null,
+    "type":"discover",
+    "page":{"number":0,"size":10},
+    "_links":
+        {
+            "self":
+                {"href":"https://dspacecris7.4science.cloud/server/api/discover/facets/graphitemtype?configuration=homepageConfiguration&sort=score,DESC"}
+                },
+            "missing":
+                {"href":"https://dspacecris7.4science.cloud/server/api/discover/facets/graphitemtype?configuration=homepageConfiguration&sort=score,DESC&f.graphitemtype=%5B*%20TO%20*%5D,notequals"}
+                },
+            "more":
+                {"href":"https://dspacecris7.4science.cloud/server/api/discover/facets/graphitemtype?configuration=homepageConfiguration&sort=score,DESC&f.graphitemtype=software paper,notequals&f.graphitemtype=SME,notequals&f.graphitemtype=..."}
+                },    
+    "_embedded":
+        {
+        "values":[
+            {
+                "label":"software paper",
+                "count":2,
+                "type":"discover",
+                "_links":{
+                    "search":
+                        {"href":"https://dspacecris7.4science.cloud/server/api/discover/search/objects?configuration=homepageConfiguration&f.graphitemtype=software paper,equals"}
+                }
+            },...
+        ]}
+        }
+    }
+} 
+```
+
 ### Matching facet search results
 **/api/discover/facets**
 
@@ -712,6 +761,12 @@ The JSON response document is as follow
   }
 }
 ```
+
+Each facet is defined by
+* `name`: an unique name assigned to the facet
+* `facetType`: can be one of text, hierarchical, date, chart.* (where the * is also included in the graphType see below)
+* `graphType`: can be one of pie, line, bar, bar.left-to-right, bar.right-to-left
+* `hasMinMaxValues`: if true the min and max values in the facet are exposed
 
 ### List values of a certain facet
 **/api/discover/facets/<:facet-name>**
