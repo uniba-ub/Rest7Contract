@@ -851,6 +851,13 @@ The returned JSON response will be like:
 }
 ```
 
+when enabled the facet details contain the following additional attributes
+* `more`: how many documents exists that have values different than the ones included in the current facet page values
+* `missing`: how many documents exists that haven't values in the facets. The missing count is by definition a subset of the more count (less or equals)
+* `totalElements`: how many different values exists in the facet with at least one document
+
+and two more links *more* and *missing* to get the results related to such facet values.
+
 ## Special configurations
 
 ### workspace
