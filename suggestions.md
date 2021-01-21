@@ -17,6 +17,7 @@ sample for a suggestion /api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b
     "id": "reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26:24694772",
     "display": "publication one",
     "source": "reciter",
+    "score": "62.7",
     "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
     "evidences": {
       "acceptedRejectedEvidence": {
@@ -102,7 +103,7 @@ sample for a suggestion /api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b
 It returns the list of suggestions and corresponding evidence from a specific source for the requested individual/target
 
 The supported parameters are:
-* page, size [see pagination](README.md#Pagination)
+* page, size [see pagination](README.md#Pagination). Data can be sorted by trust desc (default) or asc. Please note that the sort parameter must use the word trust instead than score for the sorting as score have a reserved meaning 
 * target: mandatory, the uuid associated with your target profile
 * source: mandatory, the key of the source that you want to query for suggestion
 
@@ -213,7 +214,7 @@ sample for a search /server/api/integration/suggestions/search/findByTargetAndSo
 
 ## Import suggestion
 
-See the [items endpoint](items.md#creating-an-archived-item-from-an-external-source) for details on how to import a suggestion
+See the [WorkspaceItem endpoint](workspaceitems.md#Multipart-POST-Method) for details on how to import a suggestion
 
 ## Discard suggestion
 **DELETE api/integration/suggestions/<:suggestion-id>**
