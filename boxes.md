@@ -21,6 +21,7 @@ To create a new Box perform as POST with the follow JSON:
   "minor": false,
   "style": "col-md-6",
   "clear": true,
+  "maxColumn": 2,
   "security": 0,
   "boxType": "METADATA",
   "type": "box"
@@ -62,6 +63,7 @@ Provide detailed information about a specific box. The JSON response document is
   "minor": false,
   "style": "col-md-6",
   "clear": true,
+  "maxColumn": 2,
   "security": 0,
   "boxType": "RELATION",
   "type": "box"
@@ -73,7 +75,8 @@ Attributes
 * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata
 * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization
 * the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics
-* the *clear* attribute is true if the box fills the entire row, false otherwise. 
+* the *clear* attribute is true if the box fills the entire row, false otherwise.
+* the *maxColumn* attribute is used to indicates how many column should be used to visualize content (currently only metrics boxes supports this parameter).
 
 Exposed links:
 * configuration: link to a configuration entity with more information specific for the box type. Configuration details depend on the [specific boxType](boxes-types.md)

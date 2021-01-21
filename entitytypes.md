@@ -97,11 +97,21 @@ It would respond with:
 
 ### Search methods
 #### findAllByAuthorizedCollection
-**/api/core/collections/search/findAllByAuthorizedCollection**
+**/api/core/entitytypes/search/findAllByAuthorizedCollection**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 It returns a list of entity types for which there is at least one collection in which the user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+
+#### findAllByAuthorizedExternalSource
+**/api/core/entitytypes/search/findAllByAuthorizedExternalSource**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+It returns a list of entity types for which there is at least one collection in which the user is authorized to submit supported by at least one external data source provider
 
 Return codes:
 * 200 OK - if the operation succeed
