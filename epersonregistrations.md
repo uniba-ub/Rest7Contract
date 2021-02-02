@@ -35,14 +35,22 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ## Create new EPerson registration
 **POST /api/eperson/registrations**
 
-To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
+To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated) in this case the groups field is empty.
+In case the groups field contains values, then it is a request from an ADMIN with an invitation to participate in the listed groups.
 
 ```json
 {
   "email": "user@institution.edu",
   "type": "registration"
+  "groups":[
+           "c7a30034-e63d-4109-b47f-e7baf7ca6cc8",
+           "d7k77012-s23c-3310-g49a-e2zag9vv6nm1",
+           "r9n29111-r53m-3471-y84d-r5haf4ew6ds3"
+          ]
 }
 ```
+In the case of the group invitation, the user must be an Admin
+or must have admin permissions on the parent dspace object of the listed groups.
 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
