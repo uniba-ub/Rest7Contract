@@ -242,6 +242,7 @@ The token will be sent via Email from the [Create new EPerson registration](eper
 The "eperson.firstname" and "eperson.lastname" metadata are mandatory. The phone number, language, … are optional metadata.  
 The email property can be set, but would need to be identical to the value from the registration.  
 The selfRegistered property can be set, but would need to be true
+If the token is associated with invitation to join one or more groups the created eperson will be enrolled in such group upon creation.
 
 Status codes:
 * 201 Created - if the operation succeed
