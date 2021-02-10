@@ -153,6 +153,21 @@ metadata and the value of relationship.type is 'Publication'
 Return codes:
 * 200 OK - if the operation succeed
 
+#### findAdministered
+**/api/core/collections/search/findAdministered**
+
+Returns all the collection for which the current user is administrator.
+
+The supported parameters are:
+* query: limit the returned collection to those with metadata values matching the query terms.
+  The terms are used to make also a prefix query on SOLR so it can be used to implement
+  an autosuggest feature over the collection name
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+
 ## Patch operations
 
 Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
