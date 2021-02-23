@@ -37,9 +37,6 @@ An example JSON response document to `/api/statistics/usagereports/1911e8a4-6939
         }
     ],
     "_links" : {
-      "category" : {
-        "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-      },
       "self" : {
         "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
       }
@@ -132,9 +129,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                     }
                 ],
                 "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
                   "self" : {
                     "href" : "https://{dspace.url}/server/api/statistics/usagereports/6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits"
                   }
@@ -167,9 +161,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                     }
                 ],
                 "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
                   "self" : {
                     "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
                   }
@@ -193,9 +184,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                     }
                 ],
                 "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
                   "self" : {
                     "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
                   }
@@ -217,9 +205,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                     }
                 ],
                 "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
                   "self" : {
                     "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
                   }
@@ -249,9 +234,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                     }
                 ],
                 "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
                   "self" : {
                     "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
                   }

@@ -19,7 +19,7 @@ An example JSON response document to `/api/statistics/categories/mainReports`:
     "category-type": "mainReports",
     "_links" : {
      "self" : {
-       "href" : "https://{dspace.url}/server/api/statistics/categories/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries"
+       "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
      }
     }
 }
@@ -53,12 +53,12 @@ An example JSON response document to `/api/statistics/categories/search/object?p
     "_embedded": {
         "categories": [
             {
-                "id": "mainReports",
+                "id": "site-mainReports",
                 "type": "category",
                 "category-type": "mainReports",
                 "_links" : {
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/site-mainReports"
                   }
                 }
             }
@@ -72,34 +72,34 @@ An example JSON response document to `/api/statistics/categories/search/object?u
 ```json
 {
     "_embedded": {
-        "usagereports": [
+        "categories": [
             {
-                "id": "mainReports",
+                "id": "item-mainReports",
                 "type": "category",
                 "category-type": "mainReports",
                 "_links" : {
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/item-mainReports"
                   }
                 }
             },
             {
-                "id": "relatedPublications",
+                "id": "item-relatedPublications",
                 "type": "category",
                 "category-type": "relatedPublications",
                 "_links" : {
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/relatedPublications"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/item-relatedPublications"
                   }
                 }
             },
             {
-                "id": "relatedProjects",
+                "id": "item-relatedProjects",
                 "type": "category",
-                "report-type": "relatedProjects",
+                "category-type": "relatedProjects",
                 "_links" : {
                   "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/relatedProjects"
+                    "href" : "https://{dspace.url}/server/api/statistics/categories/item-relatedProjects"
                   }
                 }
             }
