@@ -35,14 +35,22 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ## Create new EPerson registration
 **POST /api/eperson/registrations**
 
-To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
+To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated) in this case the groups field must be empty.
+In case the groups field contains values, then it is interpret as an invitation to register and join these groups. Such invitation can be created only by user that are administrator of all the specified groups.
 
 ```json
 {
   "email": "user@institution.edu",
   "type": "registration"
+  "groups":[
+           "c7a30034-e63d-4109-b47f-e7baf7ca6cc8",
+           "d7k77012-s23c-3310-g49a-e2zag9vv6nm1",
+           "r9n29111-r53m-3471-y84d-r5haf4ew6ds3"
+          ]
 }
 ```
+In the case of the group invitation, the user must be an Admin
+or must have admin permissions on the parent dspace object of the listed groups.
 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
@@ -52,6 +60,7 @@ Verifying whether a new registration can be created can happen using the "eperso
 Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
+* 403 Forbidden - if the registration includes invitation to groups that the current user doesn't administer
 * 422 Unprocessable Entity - if the email address was omitted
 
 ## Forgot password
