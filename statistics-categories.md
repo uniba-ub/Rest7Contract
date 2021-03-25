@@ -39,8 +39,8 @@ This endpoint provides a paginated list of statistics categories that have not e
 
 The DSpaceObject is given through the following parameters:
 - `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
-- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM)
-- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM)
+- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM-DD)
+- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM-DD)
 
 The usual parameters for paginated lists are supported as well:
 - `page` The page number 

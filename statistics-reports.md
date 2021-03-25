@@ -86,8 +86,8 @@ This endpoint provides a paginated list of statistics for a DSpaceObject.
 
 The DSpaceObject is given through the following parameters:
 - `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
-- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM)
-- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM)
+- `startDate` If present represent the date from which the statistics are to be taken into account (date format YYYY-MM-DD)
+- `endDate` If present represent the date until which the statistics are to be taken into account (date format YYYY-MM-DD)
 - `category` If present filter returns only the reports in the requested category, see [Statistics Categories](statistics-categories.md). The parameter must match the `id` of the category
 
 The usual parameters for paginated lists are supported as well:
@@ -176,28 +176,71 @@ An example JSON response document to `/api/statistics/usagereports/search/object
                 }
             },
             {
-                "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
+                "id": "0aa1fe0c-e173-4a36-a526-5c157dedfc07_TotalVisitsPerMonth",
+                "points": [
+                  {
+                    "id": "September 2020",
+                    "label": "September 2020",
+                    "values": {
+                      "views": 0
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "October 2020",
+                    "label": "October 2020",
+                    "values": {
+                      "views": 0
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "November 2020",
+                    "label": "November 2020",
+                    "values": {
+                      "views": 0
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "December 2020",
+                    "label": "December 2020",
+                    "values": {
+                      "views": 0
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "January 2021",
+                    "label": "January 2021",
+                    "values": {
+                      "views": 0
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "February 2021",
+                    "label": "February 2021",
+                    "values": {
+                      "views": 67
+                    },
+                    "type": "date"
+                  },
+                  {
+                    "id": "March 2021",
+                    "label": "March 2021",
+                    "values": {
+                      "views": 234
+                    },
+                    "type": "date"
+                  }
+                ],
                 "type": "usagereport",
                 "report-type": "TotalVisitsPerMonth",
                 "view-mode": "chart.line",
-                "points": [
-                    {
-                        "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
-                        "type": "date",
-                        "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
-                        "values": {
-                            "2020-03": 0,
-                            "2020-04": 0,
-                            "2020-05": 3
-                        }
-                    }
-                ],
-                "_links" : {
-                  "category" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/categories/mainReports"
-                  },
-                  "self" : {
-                    "href" : "https://{dspace.url}/server/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits"
+                "_links": {
+                  "self": {
+                    "href": "https://dspacecris7.4science.cloud/server/api/statistics/usagereports/0aa1fe0c-e173-4a36-a526-5c157dedfc07_TotalVisitsPerMonth"
                   }
                 }
             },
