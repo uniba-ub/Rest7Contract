@@ -13,8 +13,7 @@ Provide detailed information about a specific ORCID history entry. The JSON resp
   "status": "201",
   "putCode": "123456",
   "responseMessage": "<xml><work>...</work>",
-  "lastAttempt": "2014-01-01T23:28:56.782Z", 
-  "successAttempt":"2014-01-01T23:28:56.782Z",
+  "timestamp": "2014-01-01T23:28:56.782Z", 
   "type": "orcidhistory",
   "_links": {
     "self": {
@@ -44,6 +43,7 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if no ORCID queue entry exists related to the fiven URI
+* 422 Unprocessable entity - if the ORCID object to synchronize with ORCID registry is not valid
 
 An example curl call:
 ```
