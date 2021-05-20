@@ -21,7 +21,9 @@ Provide detailed information about a specific submission-section. The JSON respo
   	header: "First page",
   	mandatory: true,
   	sectionType: "submission-form",
-  	scope: null,
+  	visibility: {
+      "workflow": "hidden"
+    },
   	type: "submissionsection",
   	_links: {
   		"config" : "<dspace-url>/config/submissionforms/<:id-of-the-submission-form-page>" 
@@ -31,7 +33,11 @@ Provide detailed information about a specific submission-section. The JSON respo
 
 * the *header* attribute is the label or the i18n key to use to present the section to the user
 * the *mandatory* attribute defines if the section MUST be used by each submission. Otherwise, the user is allowed to enable/disable the section interacting with the workspaceitem
-* the *scope* attribute can be null or one of the values: workflow or submission. A value other than *null* mean that the section will be only available during the specified phase 
+* visibility: the *visibility* nested attributes explain if and how a section should be used in a specific scope (i.e. the submission and the workflow). Each attribute can assume one of the following values  
+    * `null` : omitted means editable
+    * `hidden`: not available in the scope defined by the attribute name
+    * `read-only`: not alterable in the scope
+    For example `visibility :{"submission" : "read-only", "workflow": "hidden"}` would imply that the section is visible in read-only mode during the submission and not present at all during the workflow. `visibility :{"workflow": "read-only"}` means that the section can be input during the submission but not modified during the workflow
 * the *sectionType* attribute defines the kind of section that the UI will need to use to interact with the data. See the [documentation about the available values for sectionType provided here](submissionsection-types.md)
 
 
