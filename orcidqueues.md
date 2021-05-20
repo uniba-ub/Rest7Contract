@@ -10,8 +10,9 @@ Provide detailed information about a specific ORCID queue entry. The JSON respon
   "id": 73,
   "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
   "entityId": "66e0d773-ddeb-4b6b-bcac-ced2ae67141c",
-  "entityName": "My Publication",
-  "entityType": "Publication",
+  "description": "My Publication",
+  "recordType": "Publication",
+  "operation": "INSERT",
   "type": "orcidqueue",
   "_links": {
     "self": {
@@ -41,8 +42,9 @@ Provide detailed information about all the ORCID queue entries related to the ow
         "id": 68,
         "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
         "entityId": "3eed1cf2-552d-491a-9a1f-ef941a0cafcd",
-        "entityName": "ABC-54321",
-        "entityType": "Project",
+        "description": "ABC-54321",
+        "recordType": "Project",
+        "operation": "UPDATE",
         "type": "orcidQueue",
         "_links": {
           "self": {
@@ -54,8 +56,9 @@ Provide detailed information about all the ORCID queue entries related to the ow
         "id": 73,
         "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
         "entityId": "66e0d773-ddeb-4b6b-bcac-ced2ae67141c",
-        "entityName": "My Publication",
-        "entityType": "Publication",
+        "description": "My Publication",
+        "recordType": "Publication",
+        "operation": "DELETE",
         "type": "orcidQueue",
         "_links": {
           "self": {
