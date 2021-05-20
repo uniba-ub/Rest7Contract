@@ -37,7 +37,8 @@ Provide detailed information about a specific submission-section. The JSON respo
     * `null` : omitted means editable
     * `hidden`: not available in the scope defined by the attribute name
     * `read-only`: not alterable in the scope
-    For example `visibility :{"submission" : "read-only", "workflow": "hidden"}` would imply that the section is visible in read-only mode during the submission and not present at all during the workflow. `visibility :{"workflow": "read-only"}` means that the section can be input during the submission but not modified during the workflow
+    For example `visibility :{"submission" : "read-only", "workflow": "hidden"}` would imply that the section is visible in read-only mode during the submission and not present at all during the workflow. `visibility :{"workflow": "read-only"}` means that the section can be input during the submission but not modified during the workflow.
+    Cisibility constraints set at the section level can be only further restricted by specific configuration of the section such as the visibility for submissionform. For example if a section is hidden the visibility settings of the single field in the form is ignored. If the section is readonly the visibility of some fields can be eventually only reduced to hidden, higher visibility will be automatically limited to "read-only"
 * the *sectionType* attribute defines the kind of section that the UI will need to use to interact with the data. See the [documentation about the available values for sectionType provided here](submissionsection-types.md)
 
 
