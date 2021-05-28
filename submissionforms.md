@@ -196,10 +196,11 @@ The json has an ordered array named rows containing the fields that need to be r
     * `lookup` type: requires use of a controlled vocabulary. Provides searching capabilities across that vocabulary to select a specific entry or entries.
     * `lookup-name` type: Same as `lookup`, but specific to names.
     * `onebox` type: acts as a single text input field. Would provide auto-suggest capabilities when associated with a (non-hierarchical) controlled vocabulary.  If the associated controlled vocabulary is hierarchical (`hieararchical=true`), then the onebox input type provides access to the hierarchical selection tree for that vocabulary.
-* visibility: the *visibility* nested attributes explain if and how a field should be used in a specific scope (i.e. the submission and the workflow). Each attribute can assume one of the following values  
+* visibility: the *visibility* nested attributes explain if and how a field should be used in a specific scope (i.e. the submission, the workflow and the edit). Each attribute can assume one of the following values  
     * `null` : omitted means editable
     * `hidden`: not available in the scope defined by the attribute name
     * `read-only`: not alterable in the scope
+    
     For example `visibility :{"submission" : "read-only", "workflow": "hidden"}` would imply that the field is visible in read-only mode during the submission and not present at all during the workflow. `visibility :{"workflow": "read-only"}` means that the field can be input during the submission but not modified during the workflow
 * label: the label to present to the user for this field
 * mandatory: *true* if the user must provides a value for this field
