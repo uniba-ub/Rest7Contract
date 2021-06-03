@@ -12,14 +12,25 @@ The JSON response document is as follow
 {
   "id": "eb645ef8-1373-41eb-bf67-6afcea7e2069",
   "visible": true,
-  "type": "profile"
+  "orcid": "0000-0002-8310-6788",
+  "orcidSynchronization": {
+    "mode": "MANUAL",
+    "publicationsPreference": "ALL",
+    "projectsPreference": "ALL",
+    "profilePreferences": ["AFFILIATION", "EDUCATION", "BIOGRAPHICAL", "IDENTIFIERS"]
+  },
+  "type": "profile",
 }
 ```
 
 Attributes:
 * id: the profile id that corresponds to the id of the eperson associated
 * visible: indicates whether the profile is public (visible: true) or private (otherwise)
+* orcid: the orcid id 
+* orcidSynchronization: contains the orcid synchronization mode and preferences
 * type: the resource type (profile)
+
+The orcid and orcidSynchronization attributes are not showed if the given profile is not linked to any ORCID account.
 
 Exposed links:
 * item: the item with which the profile is modeled
@@ -191,6 +202,32 @@ Status codes:
 * 404 Not found - if a profile for the specified eperson does not exist
 
 If the operation succeed the endpoint returns the updated resource.
+
+## Modify ORCID synchronization preferences
+**PATCH /api/cris/profiles/<:eperson-uuid>**
+
+This operation allow to change the ORCID synchronization mode and preferences of a given profile. Only an administrator can modify the profile of another eperson.
+To do this, REPLACE operations must be used with one of the following paths:
+* **/orcid/mode** - to update synchronization mode; allowed values are 'BATCH', 'MANUAL'
+* **/orcid/publications** - to update the preference relative to the publications synchronization; allowed values are 'DISABLED', 'ALL', 'MY_SELECTED' and 'MINE'
+* **/orcid/projects** - to update the preference relative to the projects synchronization; allowed values are 'DISABLED', 'ALL', 'MY_SELECTED' and 'MINE'
+* **/orcid/profile** - to update the preference relative to the profile synchronization; allowed values are a 'AFFILIATION', 'EDUCATION', 'BIOGRAPHICAL' and 'IDENTIFIERS'. It is possible to specify multiple values using ',' as separator.
+
+
+To modify the synchronization preferences use 
+```bash
+curl -i -X PATCH ${dspace-url}/api/cris/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069 --data '[ { "op": "replace", "path": "/orcid/mode", "value": "MANUAL" }]' -H "Content-Type:application/json"
+```
+
+Status codes:
+
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the given profile is not already linked to an ORCID account
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
+* 422 Unprocessable entity - if the provided path or value is not valid
+
 
 ## Delete a profile
 **DELETE /api/cris/profiles/<:eperson-uuid>**
