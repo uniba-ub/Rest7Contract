@@ -16,6 +16,7 @@
 * [/api/core/epersons](epersons.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
+* [/api/core/groups/securitysettings/<entityType>](securitysettings-endpoint.md)
 * [/api/authn/login](authentication.md#Login)
 * [/api/authn/logout](authentication.md#Logout)
 * [/api/authn/status](authentication.md#Status)
