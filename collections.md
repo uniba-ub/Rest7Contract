@@ -131,6 +131,29 @@ Return codes:
 * 400 Bad Request - if the entityType parameter is missing or invalid
 
 
+#### findAdministeredByEntityType
+**/api/core/collections/search/findAdministeredByEntityType?query=<:query>&entityType
+=<:entityTypeLabel>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* entityType: mandatory, the label of the entity type  field the collection must have
+
+It returns the list of collections with entity type requested, where the current user has administrative rights.
+
+eg:
+/api/core/collections/search/findAdministeredByEntityType?entityType=<:entityType>
+/api/core/collections/search/findAdministeredByEntityType?entityType=Publication
+
+retrieve all the collections that deal with the entity type 'Publication'  where the current user is administrator
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the entityType parameter is missing or invalid
+
+
+
+
 #### findSubmitAuthorizedByCommunity
 **/api/core/collections/search/findSubmitAuthorizedByCommunity?uuid=<:uuid>**
 
