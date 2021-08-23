@@ -6,9 +6,11 @@ This endpoint contains all of the subscription requested
 
 ## Main Endpoint
 
-**/api/core/subscriptions**
+**/api/core/subscriptions?resourceType={resourceType}**
 
-Retrieve a pageable list of subscriptions. The subscriptions are ordered by eperson number ascending.
+Retrieve a pageable list of subscriptions related with dspaceObject of type resourceType. 
+The subscriptions are ordered by eperson number ascending. If resourceType is not defined it will return
+all the subscriptions. resourceType can be Item, Collection or Community.
 
 ```json
 {
