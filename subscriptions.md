@@ -75,7 +75,7 @@ all the subscriptions. resourceType can be Item, Collection or Community.
 
 ## A list of subscriptions based on ePerson
 
-**/api/core/subscription/findByEPerson/<:id>**
+**/api/core/subscription/search/findByEPerson/<:id>**
 
 ```json
 {
@@ -156,7 +156,7 @@ It is possible to update a subscription with id
 
 ## Finds all subscription by dso and eperson
 
-**GET /api/core/subscriptions?dspace_object_id={id}&eperson_id={id}>**
+**GET /api/core/subscriptions/search/findByEPersonAndDso?dspace_object_id={id}&eperson_id={id}>**
 Find all subscription that a person made for a dataSpaceObject
 
 ```json
