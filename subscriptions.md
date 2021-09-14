@@ -75,7 +75,7 @@ all the subscriptions. resourceType can be Item, Collection or Community.
 
 ## A list of subscriptions based on ePerson
 
-**/api/core/subscription/search/findByEPerson/<:id>**
+**/api/core/subscription/search/findByEPerson?id=<:ePersonId>**
 
 ```json
 {
@@ -161,26 +161,25 @@ Find all subscription that a person made for a dataSpaceObject
 
 ```json
 {
-    "subscriptions": [
-      {
-        "id": 60,
-        "type": "subscription",
-        "subscriptionParameterList": [],
-        "subscriptionType": "subscription",
-        "_links": {
-          "dSpaceObject": {
-            "href": "http://localhost:8080/server/api/core/subscriptions/60/dSpaceObject"
-          },
-          "ePerson": {
-            "href": "http://localhost:8080/server/api/core/subscriptions/60/ePerson"
-          },
-          "self": {
-            "href": "http://localhost:8080/server/api/core/subscriptions/60"
-          }
+  "subscriptions": [
+    {
+      "id": 60,
+      "type": "subscription",
+      "subscriptionParameterList": [],
+      "subscriptionType": "subscription",
+      "_links": {
+        "dSpaceObject": {
+          "href": "http://localhost:8080/server/api/core/subscriptions/60/dSpaceObject"
+        },
+        "ePerson": {
+          "href": "http://localhost:8080/server/api/core/subscriptions/60/ePerson"
+        },
+        "self": {
+          "href": "http://localhost:8080/server/api/core/subscriptions/60"
         }
       }
-    ]
-  },
+    }
+  ],
   "_links": {
     "self": {
       "href": "http://localhost:8080/server/api/core/subscriptions/search/findByEPerson?id=49e5ff01-5467-4acd-be21-9ad7374be929"
@@ -191,7 +190,7 @@ Find all subscription that a person made for a dataSpaceObject
     "totalElements": 1,
     "totalPages": 1,
     "number": 0
-  
+  }
 }
 ```
 
