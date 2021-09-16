@@ -111,7 +111,7 @@ Return codes:
 * 200 OK - if the operation succeed
 
 #### findSubmitAuthorizedByEntityType
-**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?query=<:query>&entityType
+**/api/core/collections/search/findSubmitAuthorizedByEntityType?query=<:query>&entityType
 =<:entityTypeLabel>**
 
 The supported parameters are:
