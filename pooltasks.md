@@ -1,4 +1,4 @@
-# Pool Taks Endpoints
+# Pool Tasks Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
@@ -63,16 +63,42 @@ This is a **read-only** endpoint.
 
 It returns the tasks available for the specified user
 
+#### findAllByItem
+**/api/workflow/pooltasks/search/findAllByItem?uuid=<:item-uuid>**
+Accessible only by Admin
+It returns all the pool tasks related to the specified item
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+Return codes:
+* 200 OK - if the operation succeed. This include the case of no matching tasks where a 0-size page json representation is returned.
+* 400 Bad Request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
+
+#### findByItem
+**/api/workflow/pooltasks/search/findByItem?uuid=<:item-uuid>**
+It returns, if any, the single pooltask related to the specified item
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+Return codes:
+* 200 OK - if the operation succeed
+* 204 No Content - if there is no pool task for the specified item and the current user
+* 400 Bad Request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
+
 ## POST Method (collection level)
 The creation of pool tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
 
 ## POST Method (single resource level)
-To claim a pool task a POST request must be issued against the single pool task URL
-/api/workflow/pooltasks/:id
-
-204 No content is returned if the request succeed
-403 Not authorized if the task cannot be claimed by the logged in user
-404 if the task is not longer available
+Not allowed. To claim a pool task, please POST against the [claimed tasks](claimedtasks.md#post-method) endpoint.
 
 ## DELETE Method 
 Not allowed. To reset a workflow it is possible to issue a DELETE against the [workflowitem endpoint](workflowitem.md)

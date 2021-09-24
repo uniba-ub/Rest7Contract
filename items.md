@@ -4,9 +4,11 @@
 ## Main Endpoint
 **/api/core/items**   
 
-Provide access to the items (DBMS based). It returns the list of existent items.
+Provide access to the items (DBMS based). This endpoint is reserved to the administrators the common practice is to navigate to the single items via a discovery [search](search-endpoint.md) or [browse](browses.md).
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/items>
+Currently, this endpoint only returns "archived" items which are NOT withdrawn. However, withdrawn items and Workspace/Workflow items are findable via [search endpoints](search-endpoint.md). Template items are findable via the corresponding collection. In the future, this endpoint is likely to be updated to include all items, regardless of status, see https://github.com/DSpace/DSpace/issues/3325
+
+Example: <https://api7.dspace.org/server/#/server/api/core/items>
 
 ## Single Item
 **/api/core/items/<:uuid>**
@@ -74,13 +76,51 @@ Provide detailed information about a specific item. The JSON response document i
 }
 ```
 
+Item properties:
+* handle: the handle identifier assigned to the item, if any
+* metadata: a map of all the item's metadata where the metadata field is used to build the key in the form of <schema>.<element>[.<qualifier] and the values are an ordered list of metadata values. Administrative metadata, such as dc.description.provenance can be filtered out and available only to administrators according to the system configuration, see metadata.hide.* properties in the dspace.cfg file. For withdrawn items the actual metadata are only shown to administrators, all the other users will get an empty property
+* inArchive: it will be true only for items that have been successful deposited in the repository and have passed all, if any, the defined workflow steps. For item related to workspaceitem, workflowitem or template items this attribute will stay at false
+* discoverable: true if the item is expected to be findable trough a search or browse by authorized user
+* withdrawn: true it the item has been retired from the repository
+
 Exposed links:
-* bitstreams: list of bitstreams within the item
+* bundles: list of bundles within the item
 * owningCollection: the collection where the item belong to
 * mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
 * relationships: the relationships to other items
- 
+* thumbnail: the main thumbnail of the item
+
+Status codes:
+* 200 OK - if the item is found and it is visible to the current user or the anonymous user. Withdrawn items are returned
+* 401 Unauthorized - if you are not authenticated and the item is not visible to anonymous users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Please note that withdrawn items are visible to everyone without any metadata details
+* 404 Not found - if the item doesn't exist
+
+### Withdrawn item
+A withdrawn item is a normal item that has been retired from the repository using a patch operation as described below. Once withdrawn the response will show an empty metadata section to everyone except than administrators.
+
+ ```
+ {
+    "id":"e45a63a2-3db2-47fa-824e-3e4fdfae94f1",
+    "uuid":"e45a63a2-3db2-47fa-824e-3e4fdfae94f1",
+    "name":"Public item 1",
+    "handle":"123456789/3",
+    "metadata":{
+    },
+    "inArchive":false,
+    "discoverable":true,
+    "withdrawn":true,
+    "lastModified":"2021-06-21T12:53:57.871+00:00",
+    "entityType":null,
+    "type":"item",
+    "_links":{
+        ...
+    }
+}
+```
+
+
 ## Creating an archived item
 **POST /api/core/items?owningCollection=<:uuid>**
 
@@ -423,12 +463,30 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 
 It embeds all relationships where either the left or the right item matches the given uuid
 
+### Main Thumbnail
+**/api/core/items/<:uuid>/thumbnail**
+
+It returns the bitstream which represents the main thumbnail of the item
+
+Status codes:
+* 200 OK - returning the thumbnail
+* 204 No Content - if there is no thumbnail for the specified item
+* 401 Unauthorized - if you are not authenticated and don't have permissions on the item or the thumbnail's metadata
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+
 ### Get single version for item
 **GET /api/core/items/{:item-uuid}/version**
 
-Provide version information based on a given Item UUID. An Item UUID will only match one version.
+Provide version information based on a given Item UUID. An Item UUID will only match one version. READ permissions over the item in addition to the version permissions are checked.
+The JSON response is the same as the [Version endpoint](version.md#get-single-version).
 
-The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
+Return codes:
+* 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated and versioning is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
+* 204 No Content - if the specified item is not yet versioned
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid)
 
 ### Metrics
 **GET /api/core/items/<:uuid>/metrics**
