@@ -183,8 +183,12 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 
 
-#### findAdministeredByEntityType
-**/api/core/collections/search/findAdministeredByEntityType?query=<:query>&entityType
+#### findAdminAuthorizedByEntityType
+
+**WARNING**: this endpoint is also available with name "findAdminAuthorized" and with the same list of parameters,
+but it is an old version and will be removed on new versions of dspace and "findAdminAuthorizedByEntityType" is recommended to be used.
+
+**/api/core/collections/search/findAdminAuthorizedByEntityType?query=<:query>&entityType
 =<:entityTypeLabel>**
 
 The supported parameters are:
@@ -194,8 +198,8 @@ The supported parameters are:
 It returns the list of collections with entity type requested, where the current user has administrative rights.
 
 eg:
-/api/core/collections/search/findAdministeredByEntityType?entityType=<:entityType>
-/api/core/collections/search/findAdministeredByEntityType?entityType=Publication
+/api/core/collections/search/findAdminAuthorizedByEntityType?entityType=<:entityType>
+/api/core/collections/search/findAdminAuthorizedByEntityType?entityType=Publication
 
 retrieve all the collections that deal with the entity type 'Publication'  where the current user is administrator
 
