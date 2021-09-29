@@ -2,7 +2,7 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/core/collections**   
+**/api/core/collections**
 
 Provide access to the list of collections (DBMS based).
 
@@ -167,26 +167,32 @@ Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid or entityType parameters are missing or invalid
 
-#### findAdministered
-**/api/core/collections/search/findAdministered**
 
-Returns all the collection for which the current user is administrator.
+#### findAdministeredByEntityType
+
+**WARNING**: this endpoint is also available with name "findAdminAuthorizedByEntityType" and with the same list of parameters, but it is an
+old version and will be removed on new versions of dspace and "findAdminAuthorizedByEntityType" is recommended to be used.
+
+**/api/core/collections/search/findAdministeredByEntityType?query=<:query>&entityType
+=<:entityTypeLabel>**
 
 The supported parameters are:
-* query: limit the returned collection to those with metadata values matching the query terms.
-  The terms are used to make also a prefix query on SOLR so it can be used to implement
-  an autosuggest feature over the collection name
 * page, size [see pagination](README.md#Pagination)
+* entityType: mandatory, the label of the entity type  field the collection must have
+
+It returns the list of collections with entity type requested, where the current user has administrative rights.
+
+eg:
+/api/core/collections/search/findAdministeredByEntityType?entityType=<:entityType>
+/api/core/collections/search/findAdministeredByEntityType?entityType=Publication
+
+retrieve all the collections that deal with the entity type 'Publication'  where the current user is administrator
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Unauthorized - if you are not authenticated
-
+* 400 Bad Request - if the entityType parameter is missing or invalid
 
 #### findAdminAuthorizedByEntityType
-
-**WARNING**: this endpoint is also available with name "findAdminAuthorized" and with the same list of parameters,
-but it is an old version and will be removed on new versions of dspace and "findAdminAuthorizedByEntityType" is recommended to be used.
 
 **/api/core/collections/search/findAdminAuthorizedByEntityType?query=<:query>&entityType
 =<:entityTypeLabel>**
@@ -207,9 +213,28 @@ Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the entityType parameter is missing or invalid
 
+#### findAdministered
+
+**WARNING**: this endpoint is also available with name "findAdminAuthorized" and with the same list of parameters.
+This endpoint is an old version and will be removed on new versions of dspace and "findAdminAuthorized" is recommended to be used.
+
+**/api/core/collections/search/findAdministered**
+
+Returns all the collection for which the current user is administrator.
+
+The supported parameters are:
+* query: limit the returned collection to those with metadata values matching the query terms.
+  The terms are used to make also a prefix query on SOLR so it can be used to implement
+  an autosuggest feature over the collection name
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
 
 #### findAdminAuthorized
-**/api/core/collections/search/findAdminAuthorized**
+
+**/api/core/collections/search/[findAdminAuthorized]()**
 
 Get the list of all collections the current user is admin for.
 
@@ -393,7 +418,7 @@ This is a Read-only endpoint to retrieve the mapped items for this collection.
 
 Item mappings can only be modified via [/items/[uuid]/mappedCollections](items.md#mapped-collections)
 
-The request will return a list of items 
+The request will return a list of items
 
 ### Collection Harvesting Settings
 **GET /api/core/collections/<:uuid>/harvester**
@@ -625,7 +650,7 @@ Modifying the collection administrators group will be authorized for admins, par
 To be used on a collection with an administrator group
 
 Status codes:
-* 204 No content - if the delete succeeded (including the case of no-op if the collection didn't contain an administrator group) 
+* 204 No content - if the delete succeeded (including the case of no-op if the collection didn't contain an administrator group)
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only admins, parent community admins and collection admins can delete the group
 * 404 Not found - if the collection doesn't exist
@@ -693,11 +718,11 @@ To create a collection, perform as post with the JSON below when logged in as ad
 }
 ```
 
- Error messages:
- * 200 OK - if the operation succeed
- * 401 Unauthorized - if you are not authenticated
- * 403 Forbidden - if you are not logged in with sufficient permissions
- * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
 
 ## Updating a collection
 
