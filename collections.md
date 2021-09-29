@@ -191,6 +191,7 @@ retrieve all the collections that deal with the entity type 'Publication'  where
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the entityType parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
 
 #### findAdminAuthorizedByEntityType
 
@@ -212,6 +213,7 @@ retrieve all the collections that deal with the entity type 'Publication'  where
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the entityType parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
 
 #### findAdministered
 
