@@ -175,6 +175,70 @@ Provide access to all the configured CRIS layout sections. The full JSON respons
   }
 }
 ```
+
+
+## Search Endpoint
+
+**/api/layout/sections/search/visibleTopBarSections**   
+
+Lists all the CRIS layout sections for the top bar marked as visible.
+The full JSON response document is as follow
+```json
+{
+    "_embedded": {
+        "sections": [{
+            "id": "sectionresearchoutputs",
+            "componentRows": [
+                [{
+                    "discoveryConfigurationName": null,
+                    "style": null,
+                    "searchType": null,
+                    "initialStatements": 3,
+                    "displayTitle": true,
+                    "componentType": "search"
+                }]
+            ],
+            "type": "section",
+            "_links": {
+                "self": {
+                    "href": "http://localhost/api/layout/sections/sectionresearchoutputs"
+                }
+            }
+        }, {
+            "id": "sectionfundings_and_projects",
+            "componentRows": [
+                [{
+                    "discoveryConfigurationName": null,
+                    "style": null,
+                    "searchType": null,
+                    "initialStatements": 3,
+                    "displayTitle": true,
+                    "componentType": "search"
+                }]
+            ],
+            "type": "section",
+            "_links": {
+                "self": {
+                    "href": "http://localhost/api/layout/sections/sectionfundings_and_projects"
+                }
+            }
+        }]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost/api/layout/sections/search/visibleTopBarSections"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+```
+
+
 ## Single Section
 **/api/layout/sections/<:id>**
 
