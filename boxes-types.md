@@ -1,10 +1,87 @@
 # Layout Box Types
-[Layout Box Endpoints](boxes.md)
+[Layout Tab Endpoints](tabs.md)
 
 The following table list the boxTypes available out-of-box in DSpace-CRIS 7
 
-boxType | description | details
------------- | ------------- | -------------
-METADATA | the box is used to visualize metadata and files of the item | [boxmetadataconfiguration endpoint](box-metadata.md)
-RELATION | the box is used to visualize linked items retrieved via a discovery query | [boxrelationconfiguration endpoint](box-relation.md)
-METRICS | the box is used to visualize one or more metrics about the object | [boxmetricsconfiguration endpoint](box-metrics.md)
+boxType | description
+------------ | -------------
+METADATA | the box is used to visualize metadata and files of the item 
+RELATION | the box is used to visualize linked items retrieved via a discovery query
+METRICS | the box is used to visualize one or more metrics about the object
+
+## Metadata Configuration
+
+```json
+{
+  "id": 1,
+  "rows": [
+    {
+	  "fields": [
+	  	{
+	  		metadata: "dc.contibutor.author",
+	  		label: "Authors",
+	  		rendering: "browselink",
+	  		fieldType: "metadata",
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
+	  	},
+	  	{
+	  		bitstream: {
+	  			bundle: "ORIGINAL", 
+	  			metadataField: "dc.type",
+	  			metadataValue: "picture"
+	  		},
+	  		label: "Authors",
+	  		rendering: "thumbnail",
+	  		fieldType: "bitstream",
+	  		style: null,
+	  		styleLabel: null,
+	  		styleValue: null
+	  	}
+  	}
+  ]
+}
+```
+
+It provides the configuration for a component that visualize a list of metadata according to specific rules
+
+Attributes
+* the *id* attribute has the same value that the id of the related box
+* the *label* attribute is the i18n key for the field label to visualize
+* the *rendering* attribute defines the component to use to visualize the field. Examples are browselink, longtext, identifier, date, etc. for metadata field and preview, thubmnail, etc. for bitstream field 
+* the *style* attribute allows to set arbitrary css styles to the container of the generated html
+* the *styleLabel* attribute allows to set arbitrary css styles to the label
+* the *styleValue* attribute allows to set arbitrary css styles to the metadata value
+* the *fieldType" is one of metadata or bitstream a corresponding attribute will be present
+* metadata: is the canonical name of the metadata to use (eg dc.contributor.author, dc.title, etc.)
+* bitstream: is an object containing details to filter the bitstreams to use. It can be the name of the bundle to use and/or the value of specfic bitstream metadata
+
+## Metrics Configuration
+
+Provides detailed information about the metrics associated to the box
+
+```json
+{
+  "id": 1,
+  "numColumns": 2,
+  "metrics": ["views", "downloads"]
+}
+```
+
+It provides the configuration for a component that visualize a list of metrics.
+
+## Relation Configuration
+
+
+Provides detailed information about the relation included in the box
+
+```json
+{
+  "id": 1,
+  "discovery-configuration": "the-name-of-the-discovery-configuration"
+}
+```
+
+the-name-of-the-discovery-configuration will match a discovery configuration where a facet named "cluster" 
+will be eventually defined  to group the result by arbitrary defined criteria (facet query)
