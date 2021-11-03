@@ -41,7 +41,7 @@
 * [/api/cris/orcidqueues](orcidqueues.md)
 * [/api/cris/orcidhistories](orcidhistories.md)
 * [/api/layout/sections](sections.md)
-* [/api/layout/sections/search/visibleTopBarSections](sections.md#Search)
+* [/api/layout/sections/search/visibleTopBarSections](sections.md)
 * [/api/integration/itemexportformats](itemexportformats.md)
 
 ## Endpoints Under Development/Discussion

@@ -237,7 +237,14 @@ The full JSON response document is as follow
     }
 }
 ```
+Return codes:
+* 200 OK - The operation succeed
 
+* `sections`: is an array, it contains the sections to be shown in the nav bar
+* `size` - the dimension of the result set window returned (can be different from the requested value due to imposed limit, see the request parameters section)
+* `totalElements` - the total size of the result set
+* `totalPages` - the number of available page of result using the current window size
+* `number` - the index (zero-based) of the returned page
 
 ## Single Section
 **/api/layout/sections/<:id>**
