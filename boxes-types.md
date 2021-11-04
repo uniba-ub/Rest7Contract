@@ -54,8 +54,10 @@ Attributes
 * the *styleLabel* attribute allows to set arbitrary css styles to the label
 * the *styleValue* attribute allows to set arbitrary css styles to the metadata value
 * the *fieldType" is one of metadata or bitstream a corresponding attribute will be present
-* metadata: is the canonical name of the metadata to use (eg dc.contributor.author, dc.title, etc.)
-* bitstream: is an object containing details to filter the bitstreams to use. It can be the name of the bundle to use and/or the value of specfic bitstream metadata
+* the *labelAsHeading* attribute indicates if the label must be showed as header of the value instead of inline
+* the *valuesInline* attribute indicates if multiple values of the same metadata should be shown inline
+* the *metadata* attribute is the canonical name of the metadata to use (eg dc.contributor.author, dc.title, etc.)
+* the *bitstream* attribute is an object containing details to filter the bitstreams to use. It can be the name of the bundle to use and/or the value of specfic bitstream metadata
 
 ## Metrics Configuration
 

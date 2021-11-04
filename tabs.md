@@ -18,6 +18,7 @@ To create a new Tab perform as POST with the follow JSON:
   "priority": 1,
   "security": 0,
   "type": "tab",
+  "landing": "true",
   "rows": [
     {
       "style": "col-md-12",
@@ -65,6 +66,7 @@ To create a new Tab perform as POST with the follow JSON:
               "minor": false,
               "style": "col-md-6",
               "clear": true,
+              "container": false,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
@@ -99,6 +101,7 @@ To create a new Tab perform as POST with the follow JSON:
               "minor": false,
               "style": "col-md-6",
               "clear": true,
+              "container": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "RELATION",
@@ -177,6 +180,7 @@ Provide detailed information about a specific tab. The JSON response document is
   "priority": 1,
   "security": 0,
   "type": "tab",
+  "landing": "true",
   "rows": [
     {
       "style": "col-md-12",
@@ -192,6 +196,7 @@ Provide detailed information about a specific tab. The JSON response document is
               "minor": false,
               "style": "col-md-6",
               "clear": true,
+              "container": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
@@ -210,7 +215,8 @@ Provide detailed information about a specific tab. The JSON response document is
                       { 
                         "metadata": "person.email",
                         "label": "Email",
-                        "fieldType": "metadata"
+                        "fieldType": "metadata",
+                        "valuesInline": "true"
                       }
                     ]
                   }
@@ -240,7 +246,8 @@ Provide detailed information about a specific tab. The JSON response document is
                       {
                         "metadata": "person.birthDate",
                         "label": "Birth date",
-                        "fieldType": "metadata"
+                        "fieldType": "metadata",
+                        "labelAsHeading": "true"
                       }
                     ]
                   }
@@ -309,6 +316,7 @@ Provide detailed information about a specific tab. The JSON response document is
 
 Attributes
 * the *header* attribute is the label or the i18n key to use to present the section to the user
+* the *landing* attribute is a boolean that indicates if the given tab should always be visible on the top of the page
 * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata
 * the *rows* attribute is an array with the ordered list of rows that compose the tab. Each row has the following attributes
   * the *style* attribute is the css style related to the row
@@ -318,6 +326,7 @@ Attributes
       * the *header* attribute is the label or the i18n key to use to present the section to the user 
       * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata 
       * the *collapsed* attribute indicates whether the box should be shown initially collapsed or not 
+      * the *container* attribute indicates if the box container should be shown or not
       * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization 
       * the *style* attribute is the css style related to the box
       * the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics 
