@@ -18,7 +18,7 @@ To create a new Tab perform as POST with the follow JSON:
   "priority": 1,
   "security": 0,
   "type": "tab",
-  "landing": "true",
+  "leading": "true",
   "rows": [
     {
       "style": "col-md-12",
@@ -180,7 +180,7 @@ Provide detailed information about a specific tab. The JSON response document is
   "priority": 1,
   "security": 0,
   "type": "tab",
-  "landing": "true",
+  "leading": "true",
   "rows": [
     {
       "style": "col-md-12",
@@ -316,7 +316,7 @@ Provide detailed information about a specific tab. The JSON response document is
 
 Attributes
 * the *header* attribute is the label or the i18n key to use to present the section to the user
-* the *landing* attribute is a boolean that indicates if the given tab should always be visible on the top of the page
+* the *leading* attribute is a boolean that indicates if the given tab should always be visible on the top of the page
 * the *security* attribute is a constant where 0 mean public, 1 mean administrators, 2 mean owner only, 3 owner & administrators, 4 custom metadata
 * the *rows* attribute is an array with the ordered list of rows that compose the tab. Each row has the following attributes
   * the *style* attribute is the css style related to the row
