@@ -21,7 +21,6 @@ To create a new Tab perform as POST with the follow JSON:
   "leading": "true",
   "rows": [
     {
-      "style": "col-md-12",
       "cells": [
         {
           "style": "col-md-6",
@@ -33,7 +32,6 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
@@ -65,7 +63,6 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "container": false,
               "maxColumn": 2,
               "security": 0,
@@ -100,7 +97,6 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "container": true,
               "maxColumn": 2,
               "security": 0,
@@ -116,7 +112,7 @@ To create a new Tab perform as POST with the follow JSON:
       ]
     },
     {
-      "style": "col-md-12",
+      "style": "bg-light",
       "cells": [
         {
           "style": "col-md-12",
@@ -128,7 +124,6 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": null,
-              "clear": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METRICS",
@@ -183,7 +178,6 @@ Provide detailed information about a specific tab. The JSON response document is
   "leading": "true",
   "rows": [
     {
-      "style": "col-md-12",
       "cells": [
         {
           "style": "col-md-6",
@@ -195,7 +189,6 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "container": true,
               "maxColumn": 2,
               "security": 0,
@@ -230,7 +223,6 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
@@ -266,7 +258,6 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "clear": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "RELATION",
@@ -282,7 +273,7 @@ Provide detailed information about a specific tab. The JSON response document is
       ]
     },
     {
-      "style": "col-md-12",
+      "style": "bg-light",
       "cells": [
         {
           "style": "col-md-12",
@@ -294,7 +285,6 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": null,
-              "clear": true,
               "maxColumn": 2,
               "security": 0,
               "boxType": "METRICS",
@@ -330,7 +320,6 @@ Attributes
       * the *minor* attribute is used to flag box that should be ignored in the determination of the tab visualization 
       * the *style* attribute is the css style related to the box
       * the *boxType* attribute is used to choice the appropriate component. It could be metadata, search, bibliometrics 
-      * the *clear* attribute is true if the box fills the entire row, false otherwise. 
       * the *maxColumn* attribute is used to indicates how many column should be used to visualize content (currently only metrics boxes supports this parameter). 
       * the *configuration* attribute contains more information specific for the box type. Configuration details depend on the specific [box type](boxes-types.md)
       * the *metadataSecurityFields* attribute is an array of the metadatafields that defined the security
