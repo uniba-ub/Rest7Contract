@@ -32,12 +32,11 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
-              "type": "box",
               "metadataSecurityFields": [],
               "configuration": {
+                "type": "boxmetadataconfiguration",
                 "rows": [
                   {
                     "fields": [
@@ -64,14 +63,13 @@ To create a new Tab perform as POST with the follow JSON:
               "minor": false,
               "style": "col-md-6",
               "container": false,
-              "maxColumn": 2,
               "security": 0,
               "boxType": "METADATA",
-              "type": "box",
               "metadataSecurityFields": [
                 "cris.policy.eperson"
               ],
               "configuration": {
+                "type": "boxmetadataconfiguration",
                 "rows": [
                   {
                     "fields": [
@@ -98,14 +96,9 @@ To create a new Tab perform as POST with the follow JSON:
               "minor": false,
               "style": "col-md-6",
               "container": true,
-              "maxColumn": 2,
               "security": 0,
               "boxType": "RELATION",
-              "type": "box",
-              "metadataSecurityFields": [],
-              "configuration": {
-                "discovery-configuration": "RELATION.Person.researchoutputs"
-              }
+              "metadataSecurityFields": []
             }
           ]
         }
@@ -124,13 +117,12 @@ To create a new Tab perform as POST with the follow JSON:
               "collapsed": false,
               "minor": false,
               "style": null,
-              "maxColumn": 2,
               "security": 0,
               "boxType": "METRICS",
-              "type": "box",
               "metadataSecurityFields": [],
               "configuration": {
-                "numColumns": 2,
+                "type": "boxmetricsconfiguration",
+                "maxColumns": 2,
                 "metrics": ["views", "downloads"]
               }
             }
@@ -190,10 +182,9 @@ Provide detailed information about a specific tab. The JSON response document is
               "minor": false,
               "style": "col-md-6",
               "container": true,
-              "maxColumn": 2,
+              "maxColumns": 2,
               "security": 0,
               "boxType": "METADATA",
-              "type": "box",
               "metadataSecurityFields": [],
               "configuration": {
                 "id": 1,
@@ -223,10 +214,9 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "maxColumn": 2,
+              "maxColumns": 2,
               "security": 0,
               "boxType": "METADATA",
-              "type": "box",
               "metadataSecurityFields": [
                 "cris.policy.eperson"
               ],
@@ -258,10 +248,9 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": "col-md-6",
-              "maxColumn": 2,
+              "maxColumns": 2,
               "security": 0,
               "boxType": "RELATION",
-              "type": "box",
               "metadataSecurityFields": [],
               "configuration": {
                 "id": 3,
@@ -285,10 +274,9 @@ Provide detailed information about a specific tab. The JSON response document is
               "collapsed": false,
               "minor": false,
               "style": null,
-              "maxColumn": 2,
+              "maxColumns": 2,
               "security": 0,
               "boxType": "METRICS",
-              "type": "box",
               "metadataSecurityFields": [],
               "configuration": {
                 "id": 4,
