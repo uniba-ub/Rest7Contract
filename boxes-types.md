@@ -16,30 +16,61 @@ METRICS | the box is used to visualize one or more metrics about the object
   "id": 1,
   "rows": [
     {
-	  "fields": [
-	  	{
-	  		metadata: "dc.contibutor.author",
-	  		label: "Authors",
-	  		rendering: "browselink",
-	  		fieldType: "metadata",
-	  		style: null,
-	  		styleLabel: null,
-	  		styleValue: null
-	  	},
-	  	{
-	  		bitstream: {
-	  			bundle: "ORIGINAL", 
-	  			metadataField: "dc.type",
-	  			metadataValue: "picture"
-	  		},
-	  		label: "Authors",
-	  		rendering: "thumbnail",
-	  		fieldType: "bitstream",
-	  		style: null,
-	  		styleLabel: null,
-	  		styleValue: null
-	  	}
-  	}
+      "style": "row-style",
+      "cells": [
+        {
+          "style": "cell-style",
+          "fields": [
+            {
+              bitstream: {
+                bundle: "ORIGINAL", 
+                metadataField: "dc.type",
+                metadataValue: "picture"
+              },
+              rendering: "thumbnail",
+              fieldType: "bitstream",
+              styleLabel: null,
+              styleValue: null
+            }
+          ]
+        },
+        {
+          "fields": [
+            {
+              metadata: "dc.title",
+              label: "Title",
+              fieldType: "metadata",
+              styleLabel: null,
+              styleValue: null
+            },
+            {
+              metadata: "crisrp.name",
+              label: "Name",
+              fieldType: "metadata",
+              styleLabel: null,
+              styleValue: null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "style": "cell-style",
+          "fields": [
+            {
+              metadata: "dc.contibutor.author",
+              label: "Authors",
+              rendering: "browselink",
+              fieldType: "metadata",
+              styleLabel: null,
+              styleValue: null
+            }
+          ]
+        }
+      ]
+    }
   ]
 }
 ```
@@ -50,7 +81,6 @@ Attributes
 * the *id* attribute has the same value that the id of the related box
 * the *label* attribute is the i18n key for the field label to visualize
 * the *rendering* attribute defines the component to use to visualize the field. Examples are browselink, longtext, identifier, date, etc. for metadata field and preview, thubmnail, etc. for bitstream field 
-* the *style* attribute allows to set arbitrary css styles to the container of the generated html
 * the *styleLabel* attribute allows to set arbitrary css styles to the label
 * the *styleValue* attribute allows to set arbitrary css styles to the metadata value
 * the *fieldType" is one of metadata or bitstream a corresponding attribute will be present
