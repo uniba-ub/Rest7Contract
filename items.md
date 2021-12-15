@@ -575,12 +575,12 @@ Return codes:
 
 ## Search methods
 
-### objects
-**/api/core/items/search/objects?uuid=<:uuid>**
+### findAllByIds
+**/api/core/items/search/findAllByIds?id=<:uuid>**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* uuid: mandatory, repeatable. Represents the list of objects to be used for search. For each of them, the UUID must be specified.
+* id: mandatory, repeatable. Represents the list of items to search for. For each of them, the UUID must be specified.
 
 It returns the list of matching items.
 
