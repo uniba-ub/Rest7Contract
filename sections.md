@@ -175,6 +175,77 @@ Provide access to all the configured CRIS layout sections. The full JSON respons
   }
 }
 ```
+
+
+## Search Endpoint
+
+**/api/layout/sections/search/visibleTopBarSections**   
+
+Lists all the CRIS layout sections for the top bar marked as visible.
+The full JSON response document is as follow
+```json
+{
+    "_embedded": {
+        "sections": [{
+            "id": "sectionresearchoutputs",
+            "componentRows": [
+                [{
+                    "discoveryConfigurationName": null,
+                    "style": null,
+                    "searchType": null,
+                    "initialStatements": 3,
+                    "displayTitle": true,
+                    "componentType": "search"
+                }]
+            ],
+            "type": "section",
+            "_links": {
+                "self": {
+                    "href": "http://localhost/api/layout/sections/sectionresearchoutputs"
+                }
+            }
+        }, {
+            "id": "sectionfundings_and_projects",
+            "componentRows": [
+                [{
+                    "discoveryConfigurationName": null,
+                    "style": null,
+                    "searchType": null,
+                    "initialStatements": 3,
+                    "displayTitle": true,
+                    "componentType": "search"
+                }]
+            ],
+            "type": "section",
+            "_links": {
+                "self": {
+                    "href": "http://localhost/api/layout/sections/sectionfundings_and_projects"
+                }
+            }
+        }]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost/api/layout/sections/search/visibleTopBarSections"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 2,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+```
+Return codes:
+* 200 OK - The operation succeed
+
+* `sections`: is an array, it contains the sections to be shown in the nav bar
+* `size` - the dimension of the result set window returned (can be different from the requested value due to imposed limit, see the request parameters section)
+* `totalElements` - the total size of the result set
+* `totalPages` - the number of available page of result using the current window size
+* `number` - the index (zero-based) of the returned page
+
 ## Single Section
 **/api/layout/sections/<:id>**
 
