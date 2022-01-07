@@ -573,7 +573,26 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist (or was already deleted)
 
-## Search by custom URL
+
+## Search methods
+
+### findAllByIds
+**/api/core/items/search/findAllByIds?id=<:uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* id: mandatory, repeatable. Represents the list of items to search for. For each of them, the UUID must be specified.
+
+It returns the list of matching items.
+
+Return codes:
+* 200 OK - if the operation succeed. It might result in an empty list
+* 400 Bad Request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated and the items are not visible to anonymous users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Please note that withdrawn items are visible to everyone without any metadata details
+* 404 Not found - if the item doesn't exist
+
+### findByCustomURL
 
 **GET /api/core/items/search/findByCustomURL?q=<:custom-url>**
 
@@ -583,3 +602,4 @@ Return codes:
 * 200 OK - if the operation succeed
 * 204 No content - if the operation succeed but no item was found
 * 500 Internal server error - if multiple item was found related to the given url
+
