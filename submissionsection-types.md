@@ -10,6 +10,7 @@ submission-form | [/config/submissionforms](submissionforms.md) | [example](work
 upload | [/config/submissionuploads](submissionuploads.md) | [example](workspaceitem-data-upload.md)
 license | [it is retrieved from the collection following the *license* link](collections.md#License) | [example](workspaceitem-data-license.md)
 cclicense | [/config/submissioncclicenses](submissioncclicenses.md) | [example](workspaceitem-data-cclicense.md)
+custom-url | n/a | [example](workspaceitem-data-custom-url.md)
 access | t.b.d | t.b.d
 detect-duplicate|t.b.d | [example](workspaceitem-data-detect-duplicate.md)
 
