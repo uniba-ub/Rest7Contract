@@ -33,7 +33,7 @@ If the new value is equals to one of the redirected urls, that url is removed fr
 
 ### Add redirected-url
 It is possible to add an redirected custom url as follow
-`curl --data '{[ { "op": "remove", "path": "/sections/<:name-of-the-form>/redirected-urls", "value": "<redirected-url>"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/redirected-urls", "value": "<redirected-url>"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 ### Remove redirected-url
 It is possible to remove an old custom defined url as follow
