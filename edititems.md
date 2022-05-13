@@ -53,3 +53,44 @@ To add a new value to an **existent metadata**  and the metadata must be defined
 It is possible to remove a specific metadatavalue if the metadata is defined in the submissionDefinition of current MODE
 `curl --data '[{ "op": "remove", "path": "/sections/traditionalpageone/dc.subject/0"}]' -X PATCH ${dspace7-url}/api/core/edititems/<:id>:<:MODE>`
 
+## Find available modes
+**/api/core/edititems/search/search/findModesById?uuid=<:id>**
+
+Provide detailed information about edit item modes available to current user for Item having uuid passed as input paraameter. 
+The JSON response document is as follow
+```json
+{
+  "_embedded": {
+    "edititemmodes": [
+      {
+        "id": "FULL",
+        "name": "FULL",
+        "label": null,
+        "security": 5,
+        "submissionDefinition": "publication-edit",
+        "type": "edititemmode",
+        "_links": {
+          "self": {
+            "href": "https://{dspace-cris-backend-url}/server/api/core/edititemmodes/FULL"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://{dspace-cris-backend-url}/server/api/core/edititems/search/findModesById?uuid=9880d9e1-5441-4e14-a6e8-6cf453bc25f9"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 1,
+    "totalPages": 1,
+    "number": 0
+  }
+}
+```
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad request - if the id parameter is missing or invalid
+
