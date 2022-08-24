@@ -173,6 +173,50 @@ Return codes
 - 200 Ok. 
 - 401 Unauthorized. If no user is logged in
 
+
+## Request machine to machine token
+
+**POST /api/authn/machinetokens**
+
+This endpoint can provide a machine token, a long lived machine token that can be invalidated is a separated way from the login token.
+
+The token follows the "JSON Web Token structure", same as the login tokens.
+
+ ```
+ curl -v -X POST https://{dspace-server.url}/api/authn/machinetokens -H "Authorization: Bearer eyJhbG...COdbo" -H "X-XSRF-TOKEN: {csrf-token}"
+ ```
+
+ ```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
+  "_links": {
+    "self": {
+      "href": "http://${dspace-server.url}/api/authn/machinetokens"
+    }             
+  }
+}
+```  
+
+Return codes
+- 200 Ok.
+- 401 Unauthorized. If no user is logged in
+- 403 Forbidden. If the user used the login as feature
+
+## Invalidate machine to machine token
+
+**DELETE /api/authn/machinetokens**
+
+This endpoint invalidate the machine token generated from the current user, if any.
+
+ ```
+ curl -v -X DELETE https://{dspace-server.url}/api/authn/machinetokens -H "Authorization: Bearer eyJhbG...COdbo" -H "X-XSRF-TOKEN: {csrf-token}"
+ ```
+
+Return codes
+- 204 No content.
+- 401 Unauthorized. If no user is logged in
+- 403 Forbidden. If the user used the login as feature
+
 ## Request short lived token using GET
 
 **GET /api/authn/shortlivedtokens**
