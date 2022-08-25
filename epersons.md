@@ -48,6 +48,7 @@
   "email": "user@institution.edu",
   "requireCertificate": false,
   "selfRegistered": true,
+  "machineTokenGenerated": true,
   "type": "eperson",
   "_links": {
     "self": {
