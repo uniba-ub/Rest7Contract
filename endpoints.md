@@ -25,6 +25,7 @@
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/config/submissionuploads](submissionuploads.md)
+* [/api/config/submissionaccessoptions](submissionaccessoptions.md)
 * [/api/config/workflowdefinitions](workflowdefinitions.md)
 * [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
@@ -43,6 +44,7 @@
 * [/api/layout/sections](sections.md)
 * [/api/layout/sections/search/visibleTopBarSections](sections.md)
 * [/api/integration/itemexportformats](itemexportformats.md)
+* [/api/tools/feedbacks](feedbacks.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)

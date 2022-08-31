@@ -11,7 +11,7 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 ## Single Collection
 **/api/core/collections/<:uuid>**
 
-Provide detailed information about a specific community. The JSON response document is as follow
+Provide detailed information about a specific collection. The JSON response document is as follow
 ```json
 {
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
@@ -166,7 +166,6 @@ retrieve all children collections of the community that deal with the entity typ
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid or entityType parameters are missing or invalid
-
 
 #### findAdministeredByEntityType
 
