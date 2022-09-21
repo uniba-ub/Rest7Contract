@@ -157,12 +157,12 @@ It returns the bitstream matching the given parameters.
 The supported parameters are:
 * `uuid`: mandatory, uuid of the item
 * `name`: mandatory, name of the bundle
-* `filterMetadata`: metadata field and `filterMetadataValue`: value of the metadata
+* `filterMetadata`: metadata fields to filter by (repeatable)
+* `filterMetadataValue`: values of the metadata to filter by (repeatable)
 
 Return codes:
 * 200 OK - if the operation succeed. This will contain the bitstreams
-* 400 Bad Request - if `filterMetadata` is present without `filterMetadataValue` and opposite
-* 404 Not found - if there is no matched bitstreams found
+* 400 Bad Request - if the cardinality of the `filterMetadata` and `filterMetadataValue` parameters is not the same
 * 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item 
 
 ## DELETE Method
