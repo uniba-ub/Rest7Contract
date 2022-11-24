@@ -165,6 +165,25 @@ Return codes:
 * 400 Bad Request - if the cardinality of the `filterMetadata` and `filterMetadataValue` parameters is not the same
 * 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item 
 
+### showableByItem
+**/api/core/bitstreams/search/showableByItem?uuid=<:uuid>&name=<:bundle_name>&filterMetadata=<:filterMetadata>&filterMetadataValue=<:filterMetadataValue>**
+
+It returns **NOT** _Hidden_* bitstreams matching the given parameters.
+
+> `*`_Hidden bitstream_: A bitstream with the metadata `bitstream.hide` valued with `true/yes`
+
+The supported parameters are:
+* `uuid`: mandatory, uuid of the item
+* `name`: mandatory, name of the bundle
+* `filterMetadata`: metadata fields to filter by (repeatable)
+* `filterMetadataValue`: values of the metadata to filter by (repeatable)
+
+Return codes:
+* 200 OK - if the operation succeed. This will contain the bitstreams
+* 400 Bad Request - if the cardinality of the `filterMetadata` and `filterMetadataValue` parameters is not the same, or one of the mandatory parameters is not valued
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item 
+
+
 ## DELETE Method
 Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a community or collection logo
 
