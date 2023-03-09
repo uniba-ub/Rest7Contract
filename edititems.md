@@ -66,7 +66,6 @@ The JSON response document is as follow
         "id": "FULL",
         "name": "FULL",
         "label": null,
-        "security": 5,
         "submissionDefinition": "publication-edit",
         "type": "edititemmode",
         "_links": {
