@@ -52,6 +52,7 @@
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
+* [/api/orgunittree](tree.md)
 
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)
