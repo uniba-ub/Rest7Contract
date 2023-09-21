@@ -13,11 +13,12 @@ As we don't have a use case to retrieve an eperson registration based on the ema
 ## Search EPerson registration
 **/api/eperson/registrations/search/findByToken?token=<:token>**
 
-Exposes the registered email address based on the token.  
-Also exposes whether it's a new user registration, or a password reset for an existing user.
+Exposes the registered email address based on the token or the `netId`.
+Also exposes whether it's a new user registration, or a password reset for an existing user. It can expose also `metadata` involved during the registration process, with the overridden values.
 
 ```json
 {
+  "id": 1,
   "email": "user@institution.edu",
   "user": null,
   "type": "registration"
@@ -26,11 +27,69 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 
 ```json
 {
+  "id": 2,
   "email": "user@institution.edu",
   "user": "028dcbb8-0da2-4122-a0ea-254be49ca107",
   "type": "registration"
 }
 ```
+
+```json
+{
+  "id": 3,
+  "email": null,
+  "user": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "type": "orcid",
+  "netId": "<:orcid>",
+  "registrationMetadata": {
+    "eperson.firstname": [
+      {
+        "value": "Power",
+        "language": null,
+        "authority": "",
+        "confidence": -1,
+        "place": -1,
+        "overrides": "user"
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "User",
+        "language": null,
+        "authority": "",
+        "confidence": -1,
+        "place": -1
+      }
+    ]
+  }
+}
+```
+
+## Updated EPerson registration
+**PATCH /api/eperson/registrations/<:id>?token=<:token>**
+
+To update the EPerson registration, perform a patch with the JSON below to the eperson registrations endpoint, by providing the registration `token` and the `id` of the registration. 
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/email",
+    "value": [ "vincenzo.mecca@4science.com" ]
+  }
+]
+```
+
+The allowed path is the one involving the `email` field, while the operation allowed are:
+- `replace`
+- `add` - if none already set
+
+This method, if successful, will renew the `token` and as a side effect it will send a new Email to the provided `email` value.
+
+Status codes:
+* 204 Created - if the operation succeed with a new token generated, and e new mail sent to the `email` provided in the request
+* 401 Unauthorized - if registration is disabled or the token provided is not valid
+* 422 Unprocessable Entity - if the email address was omitted or the operation is not valid
 
 ## Create new EPerson registration
 **POST /api/eperson/registrations**
