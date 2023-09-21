@@ -88,7 +88,7 @@ This method, if successful, will renew the `token` and as a side effect it will 
 
 Status codes:
 * 204 Created - if the operation succeed with a new token generated, and e new mail sent to the `email` provided in the request
-* 401 Unauthorized - if registration is disabled or the token provided is not valid
+* 401 Unauthorized - if registration is disabled or the token provided is not valid or absent
 * 422 Unprocessable Entity - if the email address was omitted or the operation is not valid
 
 ## Create new EPerson registration
