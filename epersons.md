@@ -257,46 +257,17 @@ Status codes:
 * 401 Unauthorized - if the token doesn't allow you to create this account
 
 ## Merge eperson registration data
-**POST /api/eperson/epersons/<:uuid>?token=<:token>**
+**POST /api/eperson/epersons/<:uuid>?token=<:token>&override=<:metadata-fields>**
 
-To merge some `registrationData` into an already actived user account by using a previously generated *registration-token* (i.e. `<:token>`).
-The action is permitted only to user with the same `uuid` as the one specified with the `<:uuid>` param.
-The token will be sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
+Allows the merge of some `registrationData` related to the provided *registration-token* (i.e. `<:token>`) into an already actived user account.
+The action is permitted only to the ***logged-user*** that has the same `uuid` as the one specified with the `<:uuid>` param.
+The `override` parameter contains the list of *metadata-fields* that will be overwritten for that linked user.
 
-```json
-{
-  "email": "vincenzo.mecca@4science.com",
-  "user": "<:uuid>",
-  "registrationMetadata": {
-    "eperson.firstname": [
-      {
-        "value": "Vincenzo",
-        "language": null,
-        "authority": "",
-        "confidence": -1,
-        "place": -1,
-        "overrides": "Vins"
-      }
-    ],
-    "eperson.lastname": [
-      {
-        "value": "Mecca",
-        "language": null,
-        "authority": "",
-        "confidence": -1,
-        "place": -1
-      }
-    ]
-  }
-}
-```
-
-The `email` is optional, if placed it will override the email of the linked user.  
-`registrationMetadata` list contains all the metadata to be saved inside the linked user, the optional `overrides` field describes which is the value to be overriden.
+The token was previously sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
 
 Status codes:
 * 201 Created - if the operation succeed
-* 400 Bad Request - if the `uuid` provided doesn't exist, or if some `overrides` value doesn't match with the value of the same, already stored, metadata of the user.
+* 400 Bad Request - if the `uuid` provided doesn't exist, or if some `override` element isn't found inside the linked user item.
 * 401 Unauthorized - if the `uuid` of the user is not the same as the one logged in, or if the `token` is expired
 
 ## Linked entities

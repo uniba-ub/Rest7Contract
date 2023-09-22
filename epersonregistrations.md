@@ -82,7 +82,7 @@ To update the EPerson registration, perform a patch with the JSON below to the e
 ```
 
 The allowed path is the one involving the `email` field, while the operation allowed are:
-- `replace`
+- `replace` - if a different value was set
 - `add` - if none already set
 
 This method, if successful, will renew the `token` and as a side effect it will send a new Email to the provided `email` value.
