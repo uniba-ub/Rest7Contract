@@ -14,7 +14,7 @@ As we don't have a use case to retrieve an eperson registration based on the ema
 **/api/eperson/registrations/search/findByToken?token=<:token>**
 
 Exposes the registered email address based on the token or the `netId`.
-Also exposes whether it's a new user registration, or a password reset for an existing user. It can expose also `metadata` involved during the registration process, with the overridden values.
+Also exposes whether it's a new user registration, or a password reset for an existing user. It can expose also `metadata` involved during the registration process, with the overridden values. Lastly, the `registrationType` fields is used to discriminate between the registration flow / procedure.
 
 ```json
 {
@@ -39,7 +39,8 @@ Also exposes whether it's a new user registration, or a password reset for an ex
   "id": 3,
   "email": null,
   "user": "028dcbb8-0da2-4122-a0ea-254be49ca107",
-  "type": "orcid",
+  "type": "registration",
+  "registrationType": "orcid",
   "netId": "<:orcid>",
   "registrationMetadata": {
     "eperson.firstname": [
