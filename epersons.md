@@ -256,6 +256,30 @@ Status codes:
 * 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
 * 401 Unauthorized - if the token doesn't allow you to create this account
 
+## Merge eperson registration data
+**POST /api/eperson/epersons/<:uuid>?token=<:token>&override=<:metadata-fields>**
+
+Allows the merge of some `registrationData` related to the provided *registration-token* (i.e. `<:token>`) into an already actived user account.
+The action is permitted only to the ***logged-user*** that has the same `uuid` as the one specified with the `<:uuid>` param.
+The `override` parameter contains the list of *metadata-fields* that will be overwritten for that linked user.
+
+The token was previously sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
+
+This example shows a simlpe request:
+
+```bash
+curl -X POST http://${dspace.url}/api/eperson/epersons/${id-eperson}?token=${token}&override=${metadata-fields} \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer ${bearer-token}" \
+```
+
+As you can see, the request has an ***empty body***.
+
+Status codes:
+* 201 Created - if the operation succeed
+* 400 Bad Request - if the `uuid` provided doesn't exist, or if some `override` element isn't found inside the linked user item.
+* 401 Unauthorized - if the `uuid` of the user is not the same as the one logged in, or if the `token` is expired
+
 ## Linked entities
 ### Groups
 **GET /api/eperson/epersons/<:uuid>/groups**
