@@ -265,6 +265,16 @@ The `override` parameter contains the list of *metadata-fields* that will be ove
 
 The token was previously sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
 
+This example shows a simlpe request:
+
+```bash
+curl -X POST http://${dspace.url}/api/eperson/epersons/${id-eperson}?token=${token}&override=${metadata-fields} \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer ${bearer-token}" \
+```
+
+As you can see, the request has an ***empty body***.
+
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the `uuid` provided doesn't exist, or if some `override` element isn't found inside the linked user item.
