@@ -138,10 +138,21 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 
 To update the EPerson registration, perform a patch with the JSON below to the eperson registrations endpoint, by providing the registration `token` and the `id` of the registration. 
 
+1. Replace the existing email inside the registration:
 ```json
 [
   {
     "op": "replace",
+    "path": "/email",
+    "value": [ "vincenzo.mecca@4science.com" ]
+  }
+]
+```
+2. Add an email inside the registration:
+```json
+[
+  {
+    "op": "add",
     "path": "/email",
     "value": [ "vincenzo.mecca@4science.com" ]
   }
