@@ -281,7 +281,8 @@ As you can see, the request has an ***empty body***.
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the `uuid` provided doesn't exist, or if some `override` element isn't found inside the linked user item.
-* 401 Unauthorized - if the `uuid` of the user is not the same as the one logged in, or if the `token` is not valid (i.e. expired or wrong type).
+* 401 Unauthorized - The user is anonymous, the `uuid` of the user is not the same as the one logged in, or if the `token` is not valid (i.e. expired or wrong type).
+* 403 Forbidden - The user is authenticated, the `token` is not valid or the `uuid` is not the same as the one of the user.
 
 ## Linked entities
 ### Groups

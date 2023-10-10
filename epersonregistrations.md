@@ -166,10 +166,14 @@ The allowed path is the one involving the `email` field, while the operation all
 
 This method, if successful, will renew the `token` and as a side effect it will send a new Email to the provided `email` value.
 
+We can have the following cases:
+- `email` related to an account: a validation link for reviewing the information is sent to that email address.
+- new `email`: a link to the same authentication method provided is sent to that email address 
+
 Status codes:
 
 * 204 Created - if the operation succeed with a new token generated, and e new mail sent to the `email` provided in the request
-* 401 Unauthorized - if registration is disabled or the token provided is not valid or absent
+* 401 Unauthorized - if registration is disabled the token provided is not valid or absent
 * 422 Unprocessable Entity - if the email address was omitted or the operation is not valid
 
 ## Create new EPerson registration
