@@ -260,7 +260,10 @@ Status codes:
 **POST /api/eperson/epersons/<:uuid>?token=<:token>&override=<:metadata-fields>**
 
 Allows the merge of some `registrationData` related to the provided *registration-token* (i.e. `<:token>`) into an already actived user account.
-The action is permitted only to the ***logged-user*** that has the same `uuid` as the one specified with the `<:uuid>` param.
+This action is permitted by:
+  - ***logged-user***: that has the same `uuid` as the one specified with the `<:uuid>` param.
+  - ***anonymous-user***: that provides a `validation-token` (i.e. a token obtained via email confirmation)
+
 The `override` parameter contains the list of *metadata-fields* that will be overwritten for that linked user.
 
 The token was previously sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
@@ -278,7 +281,8 @@ As you can see, the request has an ***empty body***.
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the `uuid` provided doesn't exist, or if some `override` element isn't found inside the linked user item.
-* 401 Unauthorized - if the `uuid` of the user is not the same as the one logged in, or if the `token` is expired
+* 401 Unauthorized - The user is anonymous, the `uuid` of the user is not the same as the one logged in, or if the `token` is not valid (i.e. expired or wrong type).
+* 403 Forbidden - The user is authenticated, the `token` is not valid or the `uuid` is not the same as the one of the user.
 
 ## Linked entities
 ### Groups
