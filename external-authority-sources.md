@@ -155,6 +155,69 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
               }
             ]
         },
+        "matchObjects" : [ {
+          "id" : "7fd133e7-feaa-4be9-a1d2-5258694556ae",
+          "uuid" : "7fd133e7-feaa-4be9-a1d2-5258694556ae",
+          "name" : "Public item",
+          "handle" : "123456789/4",
+          "metadata" : {
+            "crisrp.name" : [ {
+              "value" : "Public item",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dc.date.accessioned" : [ {
+              "value" : "2023-10-20T09:23:12Z",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dc.date.available" : [ {
+              "value" : "2023-10-20T09:23:12Z",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dc.date.issued" : [ {
+              "value" : "2023-10-17",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dc.identifier.doi" : [ {
+              "value" : "10.1016/j.procs.2017.03.031",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dc.identifier.uri" : [ {
+              "value" : "http://localhost:4000/handle/123456789/4",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ],
+            "dspace.entity.type" : [ {
+              "value" : "Publication",
+              "language" : null,
+              "authority" : null,
+              "confidence" : -1,
+              "place" : 0
+            } ]
+          },
+          "inArchive" : true,
+          "discoverable" : true,
+          "withdrawn" : false,
+          "lastModified" : "2023-10-20T09:23:12.984+00:00",
+          "entityType" : "Publication",
+          "type" : "item"
+        }],
         "type": "externalSourceEntry",
         "_links": {
           "authority": {
