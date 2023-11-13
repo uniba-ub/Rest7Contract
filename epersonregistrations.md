@@ -177,7 +177,7 @@ Status codes:
 * 422 Unprocessable Entity - if the email address was omitted or the operation is not valid
 
 ## Create new EPerson registration
-**POST /api/eperson/registrations**
+**POST /api/eperson/registrations?accountRequestType={requestType_forgot_or_register}**
 
 To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated) in this case the groups field must be empty.
 In case the groups field contains values, then it is interpret as an invitation to register and join these groups. Such invitation can be created only by user that are administrator of all the specified groups.
@@ -203,6 +203,7 @@ Verifying whether a new registration can be created can happen using the "eperso
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad Request - if e.g. the query param 'accountRequestType' is not present or contains something else than forgot or register
 * 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
 * 403 Forbidden - if the registration includes invitation to groups that the current user doesn't administer
 * 422 Unprocessable Entity - if the email address was omitted

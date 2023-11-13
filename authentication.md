@@ -1,7 +1,8 @@
 # Authentication
 [Back to the list of all defined endpoints](endpoints.md)
 
-The authentication mechanism since DSpace 7 is based on JSON Web Token
+The authentication mechanism since DSpace 7 is based on JSON Web Token (JWT / RFC 7519).
+
 Information about the underline implementation are [available on the wiki](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
 
 ## Login
@@ -21,10 +22,10 @@ Return codes
 Parameters must be sent in the body of a `x-www-form-urlencoded` request, i.e
 
 ```
-curl -v -X POST https://{dspace-server.url}/server/api/authn/login --data "user=dspacedemo%2Badmin%40gmail.com&password=dspace" -H "X-XSRF-TOKEN: {csrf-token}"
+curl -v -X POST https://{dspace-server.url}/server/api/authn/login --data "user=dspacedemo%2Badmin%40gmail.com&password=dspace" -H "X-XSRF-TOKEN: {csrf-token}" -b "DSPACE-XSRF-COOKIE={xsrf-cookie}"
 ```
 
-Please note that authentication requires passing a valid [CSRF token](csrf-tokens.md), previously obtained from the REST API. Also note that `curl` assumes `-H 'Content-Type: application/x-www-form-urlencoded'` for a POST request as default. 
+Please note that authentication requires passing a valid [CSRF token](csrf-tokens.md) header and cookie, previously obtained from the REST API. Also note that `curl` assumes `-H 'Content-Type: application/x-www-form-urlencoded'` for a POST request as default.
 
 This call will return a JWT (JSON Web Token) in the response in the Authorization header according to the [bearer scheme](https://datatracker.ietf.org/doc/html/rfc6750#section-2.1). This token has to be used in subsequent calls to provide your authentication details. For example:
 
@@ -107,9 +108,27 @@ This will return the authentication status, E.G.:
       "uuid" : "2245f2c5-1bed-414b-a313-3fd2d2ec89d6",
       "email" : "test@dspace.com",
       ...
-      }
+      },
+    "specialGroups" : {
+        "_embedded" : {
+           "specialGroups" : [ {
+             "id" : "3d07510c-2c33-48f5-8a04-f63bc9a63296",
+             "uuid" : "3d07510c-2c33-48f5-8a04-f63bc9a63296",
+             "name" : "A Special Group",
+             ... } ],
+        "page" : {
+            "number" : 0,
+            "size" : 20,
+            "totalPages" : 1,
+            "totalElements" : 1
+        },
+        "_links" : {
+            "self" : {
+                "href" : "http://${dspace-server.url}/api/authn/status/specialGroups"
+            }
+        }
     }
-  }
+   }
 }
 ```
 
@@ -120,6 +139,7 @@ Fields
 
 Links	
 - returns a link to the authenticated eperson
+- specialGroups: return the special groups associated with the current authentication context. Please note that specialGroups can be present also without an authenticated user (i.e. via IPAuthentication)
 
 Embedded
 - Embeds the authenticated eperson
@@ -222,10 +242,7 @@ Return codes
 
 **GET /api/authn/shortlivedtokens**
 
-The short lived token can also be retrieved using GET, if it originates from a trusted IP.
-
-This can be used by Angular to retrieve a short lived token when a POST is not possible.
-It works identical to the [POST endpoint](#request-short-lived-token)
+_As of 7.5, this option is no longer supported._  Please use POST instead (see above).
 
 ### Using short lived token
 
