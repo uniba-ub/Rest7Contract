@@ -33,6 +33,7 @@ This repository documents new DSpace REST API Contract beginning with version 7.
 ## REST Endpoints
 At the ROOT of the API a HAL document lists all the primary endpoints allowing full discovery of the API.
 * [Endpoints](endpoints.md) - Documentation for all available endpoints
+* [Submission / Deposit](submission.md) - How to deposit (or submit) a new Item into DSpace.
 * [Search Options and Relationships (on Endpoints)](search-rels.md) - How to use `/search` sub-paths on many endpoints
 * [Projections (on Endpoints)](projections.md) - How to use projections to return a subset or custom view of content
 * [CSRF Protection (on Endpoints)](csrf-tokens.md) - When using modifying verbs (POST, PUT, PATCH, DELETE), you *must* pass a CSRF token in the request.
@@ -64,6 +65,11 @@ Creates a new resource (object) and adds it to the group. Any required data (i.e
 
 - `GET` -
 Returns the first page of the resources in the group (or collection). See [Pagination](#pagination) section. 
+
+- `PATCH` -
+  Allows for batch updates (e.g. batch deletion via Patch 'remove' operation) to several resources in the collection at once.
+  The request body must adhere to the the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902).
+  See [General rules for the Patch operation](patch.md) for more details.
 
 ### On Single Resource Endpoints
 
@@ -164,16 +170,16 @@ An example
 ```
 "_links": {
     "first": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=0&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=0&size=5"
     },
     "self": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams"
+      	"href": "http://localhost:8080/server/api/core/bitstreams"
     },
     "next": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=1&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=1&size=5"
     },
     "last": {
-        "href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=2&size=5"
+        "href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
     }
 }
 ```
@@ -188,7 +194,14 @@ If the request parameters lead to a page outside the result set, then an empty p
 In the creation of the REST API, we've tried to follow a few specific design principles listed below
 
 ### On the Naming of Endpoints
-Names should be descriptive but reasonably short. Use nouns instead of verbs. Form compounds by concatenating words, all lower case, without punctuation.  For example: `metadatafields`, not `metadata-fields` or `MetadataFields`.
+
+We strive to align with these rules for all REST API endpoint names:
+* Endpoint names MUST use plural nouns instead of verbs.
+* When compounds are used in an endpoint name, the words MUST be concatenated, all lowercase, without punctuation. For example: `metadatafields`, NOT `metadata-fields` or `MetadataFields` or `metadataFields`.
+* Endpoint names SHOULD be descriptive, but reasonably short (<25 characters). Abbreviations are _not recommended_, unless necessary for brevity. When abbreviations are used, the REST Contract MUST spell out the meaning of the abbreviation.
+* Endpoints SHOULD be grouped with other related endpoints by category or name. 
+    * The "category" is the first part of the endpoint's path and is always a singular noun. For example, all configuration-related endpoints use the category "config", which means they appear under `/api/config/*`.  Similarly, all submission-related endpoints use the category "submission", which means they appear under `/api/submission/*`.
+    * Alternatively, the name of the endpoint may include a prefix to relate it to other endpoints.  For example, all workflow related endpoints start with the prefix "workflow", regardless of their category. For example: `/api/config/workflowdefinitions`, `/api/config/workflowsteps`, `/api/workflow/workflowitems`.
 
 ### HATEOAS & HAL
 The REST API supports the [HATEOAS paradigm](https://restfulapi.net/hateoas/) and adopt the [HAL format](http://stateless.co/hal_specification.html) to express links and embedded resources. Links are always **absolute** to allow for easier implementation of "follow link" methods on the REST client side.

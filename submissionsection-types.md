@@ -13,6 +13,8 @@ cclicense | [/config/submissioncclicenses](submissioncclicenses.md) | [example](
 custom-url | n/a | [example](workspaceitem-data-custom-url.md)
 access | [/config/submissionaccessoptions](submissionaccessoptions.md) | [example](workspaceitem-data-access.md)
 detect-duplicate|t.b.d | [example](workspaceitem-data-detect-duplicate.md)
+sherpaPolicies | n/a | [example](workspaceitem-data-sherpa-policy.md)
+identifiers | n/a | [example](workspaceitem-data-identifiers.md)
 
 n/a --> not applicable. The sectionType doesn't require/support any extra configuration
 t.b.d. --> to be defined. We still need to discuss that

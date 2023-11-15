@@ -6,7 +6,30 @@
 
 Provide access to the browse system (SOLR based). It returns the list of available browse indexes.
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/discover/browses>
+Example: <https://{dspace.server.url}/api/discover/browses>
+
+## Browse types
+
+There are currently types of browse, each behaving differently:
+* `valueList`:
+  * The browse index has two levels
+  * The 1st level shows the list of entries like author names, subjects, types, etc
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is used to render the author names, subjects, types, etc
+  * The `vocabulary` link is not used
+* `flatBrowse`:
+  * The browse index has one level: the full list of items
+  * The `items` link is used to render this list of items
+  * The `entries` link is not used
+  * The `vocabulary` link is not used
+* `hierarchicalBrowse`:
+  * The browse index displays the vocabulary tree
+  * The 1st level shows the tree
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is not used
+  * The `vocabulary` link is used to render the tree
 
 ## Single browse index 
 **/api/discover/browses/<:index-name>**
@@ -15,6 +38,7 @@ Provide detailed information about a specific browse index and access to the lis
 ```json
 {
   "id": "title",
+  "browseType": "flatBrowse",
   "metadataBrowse": false,
   "dataType": "title",
   "sortOptions": [
@@ -40,6 +64,9 @@ Provide detailed information about a specific browse index and access to the lis
 ```
 
 * id: the identifier for the browse index
+* browseType:
+  * `valueList` if the browse index has two levels, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
+  * `flatBrowse` if the browse index has one level: the full list of items
 * metadataBrowse: true if the browse index have two level, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
 * dataType: the kind of data indexed. Can have the values "title" for item titles, "date" for date fields or "text" for other metadata
 * sortOptions: the sort options available for this index
@@ -60,11 +87,62 @@ Error codes:
 
 It returns a collection of Browses that use the specified metadata
 
+## Hierarchical browse index 
+**/api/discover/browses/<:index-name>**
+
+Provide detailed information about a specific hierarchical browse index and access to the parameters required to access the list of items and entries. The JSON response document is as follows
+```json
+{
+  "id": "keyword",
+  "browseType": "hierarchicalBrowse",
+  "facetType": "subject",
+  "vocabulary": "srsc",
+  "type": "browse",
+  "metadata": [
+    "dc.subject"
+  ],
+  "_links" : {
+    "vocabulary" : {
+      "href" : "/server/api/submission/vocabularies/srsc"
+    }
+  }
+} 
+```
+
+* id: the identifier for the browse index
+* browseType: `hierarchicalBrowse` if the browse index should display the vocabulary tree. The 1st level shows the tree. The second level is the actual list of items linked to a specific entry
+* facetType: the discovery filter to use to filter the items
+* vocabulary: the name of the vocabulary containing the tree
+* metadata: the list of metadata used to build this index
+
+Exposed links:
+* vocabulary: link to the vocabulary containing the tree
+
+Error codes:
+
+**404** if the browse index doesn't exist
+
+## Browse indexes configured for metadata linking
+### Get a single index configured as browse links for the given metadata fields
+**/api/discover/browses/search/byFields?fields=<:field>**
+
+Example: <https://{dspace.server.url}/api/discover/browses/search/byFields?fields=dc.contributor.author&fields=dc.creator>
+
+Provide detailed information about a specific browse index and access to the list of items and entries in the index. The JSON response document is as the previous section.
+
+The supported parameters are:
+* fields: A metadata field name, eg. dc.contributor.author. This parameter is repeatable.
+
+Error codes:
+
+**204** if none of the fields are configured for browse or browse links
+**400** if the fields parameter is missing
+
 ## Browse entries
 ### Metadata browse 1st level
 **/api/discover/browses/<:index-name>/entries**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/entries>
+Example: <https://{dspace.server.url}/api/discover/browses/author/entries>
 
 It returns a collection of BrowseEntryResource the JSON document looks like
 ```json
@@ -79,7 +157,7 @@ It returns a collection of BrowseEntryResource the JSON document looks like
         "count": 1,
         "_links": {
           "items": {
-            "href": "http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
+            "href": "https://api7.dspace.org/server/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
           }
         }
       },
@@ -96,7 +174,7 @@ It returns a collection of BrowseEntryResource the JSON document looks like
 
 The supported parameters are:
 * page, size & sort [see pagination](README.md#Pagination): the sort parameter must be specified as default,(asc|desc) as 1st level browse doesn't support sorting by option other than the natural sorting of the entries
-* startsWith: the value to use to calculate the offset. Each value in the page will be greater or equals than the specified value  
+* startsWith: value to use to filter the browse results so all results returned start with this prefix, so all plain-text browse entries start with this value
 * scope: limit the browse to the items included in a specific DSpace container. It could be the UUID of a community or a collection. For example scope=9076bd16-e69a-48d6-9e41-0238cb40d863 
 
 Error codes:
@@ -109,13 +187,13 @@ Error codes:
 
 Examples:
 
-item browse: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/dateissued/items>
+item browse: <https://{dspace.server.url}/api/discover/browses/dateissued/items>
 
-2nd level metadata browse: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy>
+2nd level metadata browse: <https://{dspace.server.url}/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy>
 
 The supported parameters are:
 * page, size & sort [see pagination](README.md#Pagination): the sort name must be one of the name specified in the sortOptions.name of the browse index or *default*, followed by a comma and the order direction. For example sort=default,asc or sort=dateissued,desc
-* startsWith: the value to use to calculate the offset. Each value in the page will be greater or equals than the specified value
+* startsWith: value to use to filter the browse results so all results returned start with this prefix, so all items returned have name starting with this value
 * scope: limit the browse to the items included in a specific DSpace container. It could be the UUID of a community or a collection. For example scope=9076bd16-e69a-48d6-9e41-0238cb40d863 
 
 **On metadata browse** exactly one of the following parameter must be specified 

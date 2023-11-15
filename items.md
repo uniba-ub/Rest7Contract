@@ -171,9 +171,9 @@ The URI-list should contain the [external entry value](external-authority-source
 
 An example curl call:
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ curl -i -X POST https://api7.dspace.org/server/api/core/items?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
  -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+ --data "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 
 Only one external entry value should be present. If multiple external entry values are present, a 400 bad request will be thrown
@@ -283,11 +283,59 @@ the discoverable operation will result in:
 ```
 ## Linked entities
 
+### Access Status
+
+**GET /api/core/items/<:uuid>/accessStatus**
+
+This endpoint expose the mechanism for retrieving and calculating the access status of a DSpace item.
+It can be checked by calling this endpoint with the the corresponding item UUID.
+
+```
+curl -v "http://{dspace-server.url}/api/core/items/2245f2c5-1bed-414b-a313-3fd2d2ec89d6/accessStatus"
+```
+
+This will return the access status, E.G.:
+
+_200 - Response if the UUID parameter is valid_
+```json
+{
+  "status": "metadata.only",
+  "type": "accessStatus",
+  "_links" : {
+    "self" : {
+      "href" : "http://{dspace-server.url}/api/core/items/2245f2c5-1bed-414b-a313-3fd2d2ec89d6/accessStatus"
+    }
+  }
+}
+```
+
+Fields
+- Status: String value if the UUID is valid
+- Type: Type of the endpoint, "accessStatus" in this case
+
+Exposed links:
+- self: The valid URL to the item's access status
+
+Default access status values
+- metadata.only = Item doesn't contain a primary file
+- open.access = Item's primary file is downloadable to anonymous users
+- embargo = Item's primary file is under an embargo
+- restricted = Item's primary file is not downloadable to anonymous users
+- unknown = Item's status is indeterminable or unknown
+
+_Note: the calculation of those default values is based on the policies of the item's primary file._
+_The term primary file also refers to the first file in the original bundle if no primary file is defined._
+
+Return code
+- 200 Ok if the parameter is a valid item UUID
+- 400 Bad Request if the parameter is invalid
+- 404 Not Found if the item cannot be retrieved 
+
 ### Bundles
 
 **GET /api/core/items/<:uuid>/bundles**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
 
 It returns the bundles within this item. See the [bundle endpoint](bundles.md) for more info
 
@@ -302,13 +350,13 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
     "type": "bundle",
     "_links" : {
       "primarybitstream" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+        "href" : "https://api7.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
       "bitstreams" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+        "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
       },
       "self" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+        "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
       }
     }
   },
@@ -320,13 +368,13 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
     "type": "bundle",
     "_links" : {
       "primarybitstream" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+        "href" : "https://api7.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
       "bitstreams" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+        "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
       },
       "self" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+        "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
       }
     }
   }
@@ -340,7 +388,7 @@ This endpoint is relevant to:
 
 **POST /api/core/items/<:uuid>/bundles**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
 
 Creating a new bundle in an item would use JSON similar to the example below:
 
@@ -366,20 +414,21 @@ Status codes:
 ### Owning Collection
 **/api/core/items/<:uuid>/owningCollection**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection>
 
 It returns the collection where the item belong to
 
 **PUT /api/core/items/<:uuid>/owningCollection**
 
-The actual collection is part of the body using the uri-list
+The actual collection is part of the body using the uri-list. Note that if the parameter inheritPolicies=true is passed in the request, the item will inherit the policies of the target owning collection.
+
 Example:
 
 ```
 curl -i -X PUT "https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/8e0928a0-047a-4369-8883-12669f32dd64"
 ```
 
-It updates the owning collection (moves the item)
+It updates the owning collection (moves the item).
 
 Status codes:
 * 204 No content - if the operation succeeded
@@ -395,7 +444,7 @@ It returns all the mapped collections the item is included in.
 On the item page, it should be referenced similar to:
 ```json
     "mappedCollections": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
+      "href": "https://api7.dspace.org/server/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
     }
 ```
 
@@ -409,8 +458,8 @@ A POST request will result in creating a new mapping between the item and collec
 If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created.
 
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
- -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ curl -i -X POST https://api7.dspace.org/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
+ -H "Content-Type:text/uri-list" --data "https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
 ```
 
 The collection(s) MUST be included in the body using the `text/uri-list` content type
@@ -436,7 +485,7 @@ A DELETE request will result in removing an existing mapping between the item an
 If the collection exists and is a mapped collection for the item, the relation should be deleted.
 
 ```
- curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ curl -i -X DELETE https://api7.dspace.org/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
 ```
 
 The above request would remove the mapping between Collection with UUID `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` and Item with UUID `1911e8a4-6939-490c-b58b-a5d70f8d91fb`.
@@ -459,7 +508,7 @@ It returns the collection that have the item as template
 ### Relationships per item
 **/api/core/items/<:uuid>/relationships**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
+A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
 
 It embeds all relationships where either the left or the right item matches the given uuid
 
@@ -554,6 +603,40 @@ The JSON response document is as follow
 	}
 }
 ```
+
+### Get item identifiers
+**GET /api/core/items/{:item-uuid}/identifiers**
+
+Returns information about the identifiers associated with this item, for example Handle and DOI URIs. If relevant, the status of the identifier is also included.
+
+The JSON response is formatted like the example below (the same data model as the [identifiers submission step](submissionsections.md)).
+```json
+{
+  "identifiers" : [ {
+    "value" : "https://doi.org/10.33515/dspace-61",
+    "identifierType" : "doi",
+    "identifierStatus" : "TO_BE_REGISTERED",
+    "type" : "identifier"
+  }, {
+    "value" : "123456789/418",
+    "identifierType" : "handle",
+    "identifierStatus" : null,
+    "type" : "identifier"
+  } ],
+  "type" : "identifiers",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/server/api/core/items/6bea2772-0e71-4636-8c1c-5c132821fa2c/identifiers"
+    }
+  }
+}
+```
+Return codes:
+* 200 OK - if the operation succeeds
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid)
+* 401 Unauthorized - if you are not authenticated and versioning is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
+* 404 Not found - if the item doesn't exist
 
 ## Deleting an item
 
