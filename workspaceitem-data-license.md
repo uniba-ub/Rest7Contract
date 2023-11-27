@@ -6,7 +6,7 @@ The section data represent the data about the granted deposit license
 ```json
 {
   	"granted": true,
-  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+  	"url": "https://demo.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
     "acceptanceDate": "2017-11-20T10:32:42Z"
 }
 ```
@@ -28,15 +28,15 @@ To accept a license the client must send a JSON Patch ADD operation to the *gran
 for example, starting with the following document  
 ```json
 {
-	id: 1,
-	type: "workspaceitem",
-	sections:
+	"id": 1,
+	"type": "workspaceitem",
+	"sections":
 	{
 		"traditional-page1":
 			{
-			  "dc.title" : [{value: "Sample Submission Item", language: "en"}],
+			  "dc.title" : [{"value": "Sample Submission Item", "language": "en"}],
 			  "dc.contributor.author" : [
-			  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+			  	 		{"value": "Bollini, Andrea", "authority": "rp00001", "confidence": 600}
 			  ]
 			},
 		"license":
@@ -57,21 +57,21 @@ the following request
 will result in
 ```json
 {
-	id: 1,
-	type: "workspaceitem",
-	sections:
+	"id": 1,
+	"type": "workspaceitem",
+	"sections":
 	{
 		"traditional-page1":
 			{
-			  "dc.title" : [{value: "Sample Submission Item", language: "en"}],
+			  "dc.title" : [{"value": "Sample Submission Item","language": "en"}],
 			  "dc.contributor.author" : [
-			  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+			  	 		{"value": "Bollini, Andrea", "authority": "rp00001", "confidence": 600}
 			  ]
 			},
 		"license":
 			{
 				"granted": true,
-			  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+			  	"url": "https://demo.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
 			    "acceptanceDate": "2017-11-20T10:32:42Z"
 			}
 		...
@@ -102,21 +102,21 @@ It is possible to remove a previous grant license
 trasforming
 ```json
 {
-	id: 1,
-	type: "workspaceitem",
-	sections:
+	"id": 1,
+	"type": "workspaceitem",
+	"sections":
 	{
 		"traditional-page1":
 			{
-			  "dc.title" : [{value: "Sample Submission Item", language: "en"}],
+			  "dc.title" : [{"value": "Sample Submission Item", "language": "en"}],
 			  "dc.contributor.author" : [
-			  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+			  	 		{"value": "Bollini, Andrea", "authority": "rp00001", "confidence": 600}
 			  ]
 			},
 		"license":
 			{
 				"granted": true,
-			  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+			  	"url": "https://demo.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
 			    "acceptanceDate": "2017-11-20T10:32:42Z"
 			}
 		...
@@ -128,15 +128,15 @@ trasforming
 back in
 ```json
 {
-	id: 1,
-	type: "workspaceitem",
-	sections:
+	"id": 1,
+	"type": "workspaceitem",
+	"sections":
 	{
 		"traditional-page1":
 			{
-			  "dc.title" : [{value: "Sample Submission Item", language: "en"}],
+			  "dc.title" : [{"value": "Sample Submission Item", "language": "en"}],
 			  "dc.contributor.author" : [
-			  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+			  	 		{"value": "Bollini, Andrea", "authority": "rp00001", "confidence": 600}
 			  ]
 			},
 		"license":

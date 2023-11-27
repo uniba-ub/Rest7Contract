@@ -21,9 +21,9 @@ In the remote resource scenario, Multipart POST can include a uri-list containin
 
 An example curl call:
 ```
- curl -i -X POST https://api7.dspace.org/server/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ curl -i -X POST https://demo.dspace.org/server/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
  -H "Content-Type:text/uri-list" \
- --data "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+ --data "https://demo.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 No confirmation, user has confirmed they want this record, and the previous state of the item is empty
 
@@ -41,7 +41,7 @@ There are some constraints to import files:
 
 An example curl call:
 
-    curl --location --request POST 'https://api7.dspace.org/server/api/submission/workspaceitems' 
+    curl --location --request POST 'https://demo.dspace.org/server/api/submission/workspaceitems' 
     --form 'file=@/path/to/bibtex-test.bib' --form 'file=@/path/to/pubmed-test.xml'
 
     
@@ -61,33 +61,33 @@ Provide detailed information about a specific workspaceitem. The JSON response d
         "otherIdentifiers" : [ ]
      },
   	 "traditional-page1": {
-  	 	"dc.title" : [{value: "Sample Submission Item"}],
+  	 	"dc.title" : [{"value": "Sample Submission Item"}],
   	 	"dc.contributor.author" : [
-  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+  	 		{"value": "Bollini, Andrea", "authority": "rp00001", "confidence": 600}
   	 	]
   	 },
   	 "traditional-page2": {
-  	 	"dc.subject" : [{value: "Test"}, {value: "JSON"}, {value: "REST"}],
+  	 	"dc.subject" : [{"value": "Test"}, {"value": "JSON"}, {"value": "REST"}],
   	 	"dc.description.abstract" : [
-  	 		{value: "This is a long multiline text\n This is a second line of the abstract"}
+  	 		{"value": "This is a long multiline text\n This is a second line of the abstract"}
   	 	]
   	 },
   	 "license": {
-  	 	acceptanceDate: "2017-06-24T00:40:54.970+0000",
-  	 	url: "https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
+  	 	"acceptanceDate": "2017-06-24T00:40:54.970+0000",
+  	 	"url:" "https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
   	 },
   	 "uploads": [ 
   	 	{
-  	 		metadata: {
-  	 			"dc.title" : [{value: "sample_file.pdf"}],
-  	 			"dc.description" : [{value: "Description of the sample file"}]
+  	 		"metadata": {
+  	 			"dc.title" : [{"value": "sample_file.pdf"}],
+  	 			"dc.description" : [{"value": "Description of the sample file"}]
   	 		},
   	 		"sizeBytes": 8528,
 			"checkSum": {
 			    "checkSumAlgorithm": "MD5",
 			    "value": "9d8f0f9e369cf12159d47c146c499cf4"
 			},
-  	 		"url": "https://api7.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+  	 		"url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,
@@ -109,8 +109,7 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   	 			}
   	 		]
  		}
- 	]
-  	},
+ 	],
   	 "cclicense": {
   	 	"image-url": "https://i.creativecommons.org/l/by/4.0/88x31.png",
   	 	"license-uri": "https://creativecommons.org/licenses/by/4.0/"

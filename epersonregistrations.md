@@ -193,8 +193,8 @@ In case the groups field contains values, then it is interpret as an invitation 
           ]
 }
 ```
-In the case of the group invitation, the user must be an Admin
-or must have admin permissions on the parent dspace object of the listed groups.
+
+Requires query parameter 'accountRequestType' set with either 'register' or 'forgot' value, depending on the action requested.
 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
@@ -205,8 +205,8 @@ Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if e.g. the query param 'accountRequestType' is not present or contains something else than forgot or register
 * 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
-* 403 Forbidden - if the registration includes invitation to groups that the current user doesn't administer
-* 422 Unprocessable Entity - if the email address was omitted
+* 422 Unprocessable Entity - if the email address was omitted or the e-mail address is in a domain that is not allowed in config `authentication-password.domain.valid`
+
 
 ## Forgot password
 

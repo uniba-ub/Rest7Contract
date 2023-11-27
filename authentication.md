@@ -3,6 +3,8 @@
 
 The authentication mechanism since DSpace 7 is based on JSON Web Token (JWT / RFC 7519).
 
+The authentication mechanism since DSpace 7 is based on JSON Web Token (JWT / RFC 7519).
+
 Information about the underline implementation are [available on the wiki](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
 
 ## Login
@@ -12,7 +14,7 @@ This endpoint only accepts the `POST` method. Parameters and body structure depe
 
 A `WWW-Authenticate` header is returned listing the different authentication method supported by the system.
 Below an example listing the password and shibboleth authentication:  
-`WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://api7.dspace.org/Shibboleth.sso/Login?target=https%3A%2F%2Fapi7.dspace.org", password realm="DSpace REST API"`
+`WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://demo.dspace.org/Shibboleth.sso/Login?target=https%3A%2F%2Fdemo.dspace.org", password realm="DSpace REST API"`
 
 Return codes
 - 200 Ok. If the authentication succeed. The JWT will be returned in the response Header Authorization. 

@@ -7,6 +7,7 @@ This supports the Request a Copy feature.
 **/api/tools/itemrequests**
 
 Provide access to requests. It returns the list of existing requests avoiding to expose token to not admin users.  **NOT IMPLEMENTED**
+Provide access to requests. It returns the list of existing requests avoiding to expose token to not admin users.  **NOT IMPLEMENTED**
 
 Example: to be provided
 
@@ -31,13 +32,13 @@ Provide detailed information about a specific request. The JSON response documen
   "requestName":"John Smith",
   "_links":{
     "bitstream":{
-      "href":"https://api7.dspace.org/server/api/tools/itemrequests/1/bitstream"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1/bitstream"
     },
     "item":{
-      "href":"https://api7.dspace.org/server/api/tools/itemrequests/1/item"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1/item"
     },
     "self":{
-      "href":"https://api7.dspace.org/server/api/tools/itemrequests/1"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1"
     }
   }
 }

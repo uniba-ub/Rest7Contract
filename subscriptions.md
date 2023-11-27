@@ -66,7 +66,7 @@ Return codes:
 Provide detailed information about a specific subscription.
 The JSON response document is as follow
 
-```json
+```
 {
   "id" : 1,
   "type" : "subscription",
@@ -146,12 +146,14 @@ The supported parameters are:
   }
 }
 ```
+
 Status codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
 * 422 Unprocessable Entity - if the uuid resolve to a different DSpace Object Type than eperson
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
+
 
 #### findByEPersonAndDso
 **GET /api/core/subscriptions/search/findByEPersonAndDso?resource={id}&eperson_id={id}>**
