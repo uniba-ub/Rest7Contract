@@ -217,6 +217,7 @@ sample for a hierarchical authority  (srsc):
           "hasChildren": "false",
           "note": "Familjeforskning"
         },
+        "source" : "srsc",
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
@@ -233,6 +234,7 @@ sample for a hierarchical authority  (srsc):
           "hasChildren": "false",
           "note": "Ungdomsforskning"
         },
+        "source" : "srsc",
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
@@ -276,6 +278,8 @@ sample for a vocabulary providing an authority value
         "authority": "42768ba6-0ba1-4aa3-971e-9c4e27fd7558",
         "display": "Bollini, Andrea",
         "value": "Bollini, Andrea",
+        "otherInformation": {},
+        "source" : "local",
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
