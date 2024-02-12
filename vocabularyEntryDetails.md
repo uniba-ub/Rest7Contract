@@ -24,6 +24,7 @@ Provide detailed information about a specific vocabulary entry. The JSON respons
           "parent": "HUMANITIES and RELIGION",
           "hasChildren": "true"
       },
+      "source" : "srsc",
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
@@ -48,6 +49,7 @@ Attributes:
 * display: the preferred value to display for the entry
 * selectable: in an hierachical vocabulary it could be required to allow the selection only of leaves in the tree 
 * otherInformation: an map of additional string attributes useful to provide more context in the UI for the selection
+* source: Authority SOURCE reference
 
 Exposed links:
 * vocabulary: the vocabulary that the entry belong to
@@ -76,7 +78,7 @@ Return codes:
 Provide detailed information about all top entries of a specific hierarchical vocabulary. The JSON response document is as follow
 
 -- this one represent top entries of "srsc" vocabulary
-```json, 
+```json
 {
       "id" : "srsc:SCB11",
       "value" : "HUMANITIES and RELIGION",
@@ -86,6 +88,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
           "note" : "HUMANIORA och RELIGIONSVETENSKAP",
           "hasChildren": "true"
       },
+      "source" : "srsc",
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
@@ -110,6 +113,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "note" : "RÄTTSVETENSKAP/JURIDIK",
         "hasChildren" : "true"
       },
+      "source" : "srsc",
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
@@ -136,6 +140,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "note" : "TVÄRVETENSKAPLIGA FORSKNINGSOMRÅDEN",
         "hasChildren" : "true"
       },
+      "source" : "srsc",
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
